@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="MoneyController.AddIncomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MoneyController"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Margin="19,0,0,0">
+                    <TextBlock Text="Add Expense" Style="{ThemeResource   TitleTextBlockStyle}" Margin="0,12,0,20"/>
+                </StackPanel>
+
+                <TextBlock Text="Amount" Grid.Row="1" Style="{StaticResource LabelTextBlockExpeneStyle}"/>
+                <TextBox   Grid.Row="2" Style="{StaticResource LabelTextBoxExpenseStyle}" />
+
+                <TextBlock Text="Choose category" Grid.Row="3" Style="{StaticResource LabelTextBlockExpeneStyle}"/>
+
+                <ComboBox x:Name="ComboBoxPeople"    Grid.Row="4"
+                  IsDropDownOpen="True"
+                  IsEnabled="True"
+                  Height="30" HorizontalAlignment="Stretch" >
+
+                    <ComboBox.Items >
+                        <ComboBoxItem Content="Investment" />
+                        <ComboBoxItem Content="Other" IsSelected="True" />
+                    </ComboBox.Items>
+                </ComboBox>
+
+                <TextBlock Text="Description" Grid.Row="5" Style="{StaticResource LabelTextBlockExpeneStyle}"/>
+                <TextBox   Grid.Row="6" Style="{StaticResource LabelTextBoxExpenseStyle}"/>
+
+                <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <TextBlock Text="13 march 2015"  Style="{StaticResource LabelTextBlockExpeneStyle}"/>
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
