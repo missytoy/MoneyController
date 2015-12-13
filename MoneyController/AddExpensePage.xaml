@@ -43,16 +43,11 @@
                           Grid.Row="4"
                   IsDropDownOpen="True"
                   IsEnabled="True"
-                  SelectedValue="choose expense's type"
-                          PlaceholderText="fregr"
                   Height="30" HorizontalAlignment="Stretch" >
 
-                    <ComboBox.Items >
-                        <ComboBoxItem Content="Food" />
-                        <ComboBoxItem Content="Health" />
-                        <ComboBoxItem Content="Bills" />
-                        <ComboBoxItem Content="Other" IsSelected="True" />
-                    </ComboBox.Items>
+                    <!--<ComboBox.Items >
+                        <ComboBoxItem Content="{Binding}" />
+                    </ComboBox.Items>-->
                 </ComboBox>
 
                 <TextBlock Text="Description" Grid.Row="5" Style="{StaticResource LabelTextBlockExpeneStyle}"/>
@@ -64,6 +59,12 @@
                 </StackPanel>
 
                 <Button Grid.Row="8" Content="Add photo"/>
+
+                <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <Button Content="Cancel"  Click="OnCancelButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
+                    <Button Content="Add" Click="OnAddButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
+                </StackPanel>
+
             </Grid>
         </Grid>
     </Grid>

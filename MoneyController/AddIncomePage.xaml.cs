@@ -35,5 +35,17 @@ namespace MoneyController
             get { return this.DataContext as IncomeViewModel; }
             set { this.DataContext = value; }
         }
+
+        private void OnAddButtonClick(object sender, RoutedEventArgs e)
+        {
+            //TODO: Calculate money
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
+        private void OnCancelButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
     }
 }

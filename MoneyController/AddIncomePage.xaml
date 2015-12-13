@@ -29,6 +29,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Row="0" Margin="19,0,0,0">
@@ -48,9 +49,10 @@
                              IsEnabled="True"
                              Height="30" HorizontalAlignment="Stretch" >
 
-                    <ComboBox.Items >
+                    <!--<ComboBox.Items >
                         <ComboBoxItem Content="{Binding}" />
-                    </ComboBox.Items>
+                    </ComboBox.Items>-->
+                    
                 </ComboBox>
 
                 <TextBlock Text="Description" Grid.Row="5" Style="{StaticResource LabelTextBlockExpeneStyle}"/>
@@ -58,6 +60,11 @@
 
                 <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center" >
                     <TextBlock Text="13 march 2015"  Style="{StaticResource LabelTextBlockExpeneStyle}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <Button Content="Cancel"  Click="OnCancelButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
+                    <Button Content="Add" Click="OnAddButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
                 </StackPanel>
 
             </Grid>
