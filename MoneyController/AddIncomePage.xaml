@@ -62,10 +62,14 @@
                     <TextBlock Text="13 march 2015"  Style="{StaticResource LabelTextBlockExpeneStyle}"/>
                 </StackPanel>
 
-                <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Center" >
-                    <Button Content="Cancel"  Click="OnCancelButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
-                    <Button Content="Add" Click="OnAddButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
-                </StackPanel>
+                <Grid Grid.Row="9"  HorizontalAlignment="Stretch" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Cancel" Grid.Column="0" Click="OnCancelButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
+                    <Button Content="Confirm" Grid.Column="1"  Click="OnAddButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
+                </Grid>
 
             </Grid>
         </Grid>
