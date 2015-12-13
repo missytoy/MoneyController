@@ -110,8 +110,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="ViewModels\ExpenceType.cs" />
-    <Compile Include="ViewModels\ExpenceViewModel.cs" />
+    <Compile Include="ViewModels\ExpenseType.cs" />
+    <Compile Include="ViewModels\ExpenseViewModel.cs" />
     <Compile Include="ViewModels\IncomeType.cs" />
     <Compile Include="ViewModels\IncomeViewModel.cs" />
   </ItemGroup>

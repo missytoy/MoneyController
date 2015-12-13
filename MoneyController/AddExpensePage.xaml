@@ -39,7 +39,7 @@
 
                 <ComboBox x:Name="ComboBoxPeople"  
                           ItemsSource="{Binding ExpenseCategoryType, Converter={StaticResource enumConverter}}"
-                          SelectedItem="{Binding CategoryExpence, Mode=TwoWay}"
+                          SelectedItem="{Binding CategoryExpense, Mode=TwoWay}"
                           Grid.Row="4"
                   IsDropDownOpen="True"
                   IsEnabled="True"

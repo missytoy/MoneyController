@@ -14,12 +14,12 @@ namespace MoneyController
         {
             this.InitializeComponent();
 
-            this.ViewModel = new ExpenceViewModel();
+            this.ViewModel = new ExpenseViewModel();
         }
 
-        public ExpenceViewModel ViewModel
+        public ExpenseViewModel ViewModel
         {
-            get { return this.DataContext as ExpenceViewModel; }
+            get { return this.DataContext as ExpenseViewModel; }
             set { this.DataContext = value; }
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace MoneyController.ViewModels
 {
-    public enum ExpenceType
+    public enum ExpenseType
     {
         FoodAndDrinks = 0,
         Electronics = 1,

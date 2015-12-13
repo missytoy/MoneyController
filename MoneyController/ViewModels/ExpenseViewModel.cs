@@ -2,7 +2,7 @@
 
 namespace MoneyController.ViewModels
 {
-    public class ExpenceViewModel : ViewModelBase
+    public class ExpenseViewModel : ViewModelBase
     {
         public decimal Price { get; set; }
 
@@ -10,9 +10,9 @@ namespace MoneyController.ViewModels
 
         public string Description { get; set; }
 
-        public Type ExpenseCategoryType { get { return typeof(ExpenceType); } }
+        public Type ExpenseCategoryType { get { return typeof(ExpenseType); } }
 
-        public ExpenceType CategoryExpence { get; set; }
+        public ExpenseType CategoryExpense { get; set; }
 
         public string Gelocation { get; set; }
 
