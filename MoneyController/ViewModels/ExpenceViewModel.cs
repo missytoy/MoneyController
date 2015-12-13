@@ -10,7 +10,9 @@ namespace MoneyController.ViewModels
 
         public string Description { get; set; }
 
-        public ExpenceType ExpenceType { get; set; }
+        public Type ExpenseCategoryType { get { return typeof(ExpenceType); } }
+
+        public ExpenceType CategoryExpence { get; set; }
 
         public string Gelocation { get; set; }
 

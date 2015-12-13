@@ -7,6 +7,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <local:EnumTypeToListConverter x:Key="enumConverter"></local:EnumTypeToListConverter>
+    </Page.Resources>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid x:Name="ContentRoot" Margin="19,9.5,19,0">
             <Grid>
@@ -25,7 +29,7 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Row="0" Margin="19,0,0,0">
-                    <TextBlock Text="Add Expense" Style="{ThemeResource   TitleTextBlockStyle}" Margin="0,12,0,20"/>
+                    <TextBlock Text="Add Expense" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,20"/>
                 </StackPanel>
 
                 <TextBlock Text="Amount" Grid.Row="1" Style="{StaticResource LabelTextBlockExpeneStyle}"/>
@@ -33,18 +37,21 @@
 
                 <TextBlock Text="Choose category" Grid.Row="3" Style="{StaticResource LabelTextBlockExpeneStyle}"/>
 
-                <ComboBox x:Name="ComboBoxPeople"    Grid.Row="4"
+                <ComboBox x:Name="ComboBoxPeople"  
+                          ItemsSource="{Binding ExpenseCategoryType, Converter={StaticResource enumConverter}}"
+                          SelectedItem="{Binding CategoryExpence, Mode=TwoWay}"
+                          Grid.Row="4"
                   IsDropDownOpen="True"
                   IsEnabled="True"
                   SelectedValue="choose expense's type"
                           PlaceholderText="fregr"
                   Height="30" HorizontalAlignment="Stretch" >
-                    
+
                     <ComboBox.Items >
                         <ComboBoxItem Content="Food" />
                         <ComboBoxItem Content="Health" />
                         <ComboBoxItem Content="Bills" />
-                        <ComboBoxItem Content="Other" IsSelected="True" /> 
+                        <ComboBoxItem Content="Other" IsSelected="True" />
                     </ComboBox.Items>
                 </ComboBox>
 

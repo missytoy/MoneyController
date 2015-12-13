@@ -10,6 +10,8 @@
 
         public string Description { get; set; }
 
-        public IncomeType IncomeType { get; set; }
+        public Type IncomeCategoryTypes { get { return typeof(IncomeType); } }
+
+        public IncomeType IncomeCategory { get; set; }
     }
 }

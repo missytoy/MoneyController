@@ -5,11 +5,21 @@
     xmlns:local="using:MoneyController"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:MoneyController.ViewModels"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <local:EnumTypeToListConverter x:Key="enumConverter"></local:EnumTypeToListConverter>
+    </Page.Resources>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid x:Name="ContentRoot" Margin="19,9.5,19,0">
             <Grid>
+
+                <!--<Grid.DataContext>
+                    <viewModel:IncomeViewModel></viewModel:IncomeViewModel>
+                </Grid.DataContext>-->
+                
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -22,7 +32,7 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Row="0" Margin="19,0,0,0">
-                    <TextBlock Text="Add Expense" Style="{ThemeResource   TitleTextBlockStyle}" Margin="0,12,0,20"/>
+                    <TextBlock Text="Add Income" Style="{ThemeResource   TitleTextBlockStyle}" Margin="0,12,0,20"/>
                 </StackPanel>
 
                 <TextBlock Text="Amount" Grid.Row="1" Style="{StaticResource LabelTextBlockExpeneStyle}"/>
@@ -30,14 +40,16 @@
 
                 <TextBlock Text="Choose category" Grid.Row="3" Style="{StaticResource LabelTextBlockExpeneStyle}"/>
 
-                <ComboBox x:Name="ComboBoxPeople"    Grid.Row="4"
-                  IsDropDownOpen="True"
-                  IsEnabled="True"
-                  Height="30" HorizontalAlignment="Stretch" >
+                <ComboBox x:Name="ComboBoxPeople"   
+                             ItemsSource="{Binding IncomeCategoryTypes, Converter={StaticResource enumConverter}}"
+                             SelectedItem="{Binding IncomeCategory, Mode=TwoWay}"
+                             Grid.Row="4"
+                             IsDropDownOpen="True"
+                             IsEnabled="True"
+                             Height="30" HorizontalAlignment="Stretch" >
 
                     <ComboBox.Items >
-                        <ComboBoxItem Content="Investment" />
-                        <ComboBoxItem Content="Other" IsSelected="True" />
+                        <ComboBoxItem Content="{Binding}" />
                     </ComboBox.Items>
                 </ComboBox>
 

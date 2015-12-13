@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoneyController.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,14 @@ namespace MoneyController
         public AddIncomePage()
         {
             this.InitializeComponent();
+
+            this.ViewModel = new IncomeViewModel();
+        }
+
+        public IncomeViewModel ViewModel
+        {
+            get { return this.DataContext as IncomeViewModel; }
+            set { this.DataContext = value; }
         }
     }
 }
