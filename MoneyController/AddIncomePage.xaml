@@ -6,13 +6,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="using:MoneyController.ViewModels"
+    xmlns:helpers="using:MoneyController.Helpers"
     mc:Ignorable="d">
 
     <Page.Resources>
         <local:EnumTypeToListConverter x:Key="enumConverter"></local:EnumTypeToListConverter>
         <local:DateTimeTaker x:Key="dateTimeTaker" />
     </Page.Resources>
-    
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid x:Name="ContentRoot" Margin="19,9.5,19,0">
             <Grid>
@@ -20,7 +21,7 @@
                 <!--<Grid.DataContext>
                     <viewModel:IncomeViewModel></viewModel:IncomeViewModel>
                 </Grid.DataContext>-->
-                
+
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -53,7 +54,7 @@
                     <!--<ComboBox.Items >
                         <ComboBoxItem Content="{Binding}" />
                     </ComboBox.Items>-->
-                    
+
                 </ComboBox>
 
                 <TextBlock Text="Description" Grid.Row="5" Style="{StaticResource LabelTextBlockExpeneStyle}"/>
