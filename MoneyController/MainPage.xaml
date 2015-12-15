@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Style="{StaticResource LayoutGridStyle}">
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
             <Grid>
                 <Grid.RowDefinitions>
@@ -18,8 +18,10 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <StackPanel Grid.Row="0" Margin="19,0,0,0">
-                    <TextBlock Text="{StaticResource AppName}" Style="{ThemeResource   TitleTextBlockStyle}" Margin="0,12,0,20"/>
+                <StackPanel Grid.Row="0" Margin="29,0,0,0">
+                    <TextBlock Text="{StaticResource AppName}" 
+                               Style="{StaticResource TitleStyle}" />
+
                 </StackPanel>
 
                 <Button Content="Add Income" Grid.Row="1" Click="OnAddIncomeButtonClick" />
@@ -31,5 +33,5 @@
             </Grid>
         </Grid>
     </Grid>
-    
+
 </Page>

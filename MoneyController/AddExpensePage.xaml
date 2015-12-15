@@ -13,7 +13,7 @@
         <local:DateTimeTaker x:Key="dateTimeTaker" />
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Style="{StaticResource LayoutGridStyle}">
         <Grid x:Name="ContentRoot" Margin="19,9.5,19,0">
             <Grid>
                 <Grid.RowDefinitions>
@@ -24,45 +24,52 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="50"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <StackPanel Grid.Row="0" Margin="19,0,0,0">
-                    <TextBlock Text="Add Expense" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,20"/>
+                <StackPanel Grid.Row="0" Margin="0,0,0,0">
+                    <TextBlock Text="Add Expense"  Style="{StaticResource TitleStyle}"/>
                 </StackPanel>
 
-                <TextBlock Text="Amount" Grid.Row="1" Style="{StaticResource LabelTextBlockExpeneStyle}"/>
-                <TextBox   Grid.Row="2" Style="{StaticResource LabelTextBoxExpenseStyle}" />
+                <Border Background="#6d8963"  Grid.Row="1">
+                    <TextBox PlaceholderText="Add Amount"/>
+                </Border>
 
-                <TextBlock Text="Choose category" Grid.Row="3" Style="{StaticResource LabelTextBlockExpeneStyle}"/>
 
-                <ComboBox x:Name="ComboBoxPeople"  
+                <Border Background="#323f2d"  Grid.Row="2" Margin="0,0,0,-20">
+                    <TextBlock Text="Choose category"  Style="{StaticResource LabelTextBlockExpenseStyle}"/>
+                </Border>
+
+               
+            
+                <Border Background="#6d8963"  Grid.Row="3">
+                    <ComboBox x:Name="ComboBoxPeople"  
                           ItemsSource="{Binding ExpenseCategoryType, Converter={StaticResource enumConverter}}"
                           SelectedItem="{Binding CategoryExpense, Mode=TwoWay}"
-                          Grid.Row="4"
-                  IsDropDownOpen="True"
-                  IsEnabled="True"
-                  Height="30" HorizontalAlignment="Stretch" >
+                          IsDropDownOpen="True"
+                          IsEnabled="True"
+                          Height="30" HorizontalAlignment="Stretch" >
 
                     <!--<ComboBox.Items >
                         <ComboBoxItem Content="{Binding}" />
                     </ComboBox.Items>-->
                 </ComboBox>
+                </Border>
+                
+                
+                <Border Background="#6d8963"  Grid.Row="4">
+                    <TextBox PlaceholderText="Add Description"/>
+                </Border>
 
-                <TextBlock Text="Description" Grid.Row="5" Style="{StaticResource LabelTextBlockExpeneStyle}"/>
-                <TextBox   Grid.Row="6" Style="{StaticResource LabelTextBoxExpenseStyle}"/>
-
-                <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center" >
-                    <TextBlock Text="{Binding Source={StaticResource dateTimeTaker}, Path=Now}"  Style="{StaticResource LabelTextBlockExpeneStyle}"/>
-                    <TextBlock Text=" location" Style="{StaticResource LabelTextBlockExpeneStyle}"/>
+                <StackPanel Grid.Row="8" Background="#323f2d"  HorizontalAlignment="Stretch" >
+                    <TextBlock Text="{Binding Source={StaticResource dateTimeTaker}, Path=Now}"  Style="{StaticResource LabelTextBlockExpenseStyle}"/>
+                    <TextBlock Text=" location" Style="{StaticResource LabelTextBlockExpenseStyle}"/>
                 </StackPanel>
 
-                <Button Grid.Row="8" Content="Add photo"/>
+                <Button Grid.Row="5" Content="Add photo"/>
 
-                <Grid Grid.Row="9"  HorizontalAlignment="Stretch" >
+                <Grid Grid.Row="6"  HorizontalAlignment="Stretch" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>

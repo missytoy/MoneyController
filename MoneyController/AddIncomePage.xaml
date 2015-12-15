@@ -14,9 +14,9 @@
         <local:DateTimeTaker x:Key="dateTimeTaker" />
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Style="{StaticResource LayoutGridStyle}" >
         <Grid x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <Grid>
+            <Grid Height="631" VerticalAlignment="Top">
 
                 <!--<Grid.DataContext>
                     <viewModel:IncomeViewModel></viewModel:IncomeViewModel>
@@ -30,42 +30,41 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="50"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Row="0" Margin="19,0,0,0">
-                    <TextBlock Text="Add Income" Style="{ThemeResource   TitleTextBlockStyle}" Margin="0,12,0,20"/>
+                    <TextBlock Text="Add Income"  Style="{StaticResource TitleStyle}"/>
                 </StackPanel>
 
-                <TextBlock Text="Amount" Grid.Row="1" Style="{StaticResource LabelTextBlockExpeneStyle}"/>
-                <TextBox   Grid.Row="2" Style="{StaticResource LabelTextBoxExpenseStyle}" />
+                <Border Background="#6d8963"  Grid.Row="1" >
+                    <TextBox PlaceholderText="Add Amount"/>
+                </Border>
 
-                <TextBlock Text="Choose category" Grid.Row="3" Style="{StaticResource LabelTextBlockExpeneStyle}"/>
+                <Border Background="#323f2d"  Grid.Row="2" Margin="0,0,0,-20">
+                    <TextBlock Text="Choose category"  Style="{StaticResource LabelTextBlockExpenseStyle}" ></TextBlock>
+                </Border>
 
-                <ComboBox x:Name="ComboBoxPeople"   
+                <Border Background="#6d8963" Grid.Row="3" >
+                    <ComboBox x:Name="ComboBoxPeople"   
                              ItemsSource="{Binding IncomeCategoryTypes, Converter={StaticResource enumConverter}}"
                              SelectedItem="{Binding IncomeCategory, Mode=TwoWay}"
-                             Grid.Row="4"
                              IsDropDownOpen="True"
                              IsEnabled="True"
                              Height="30" HorizontalAlignment="Stretch" >
 
-                    <!--<ComboBox.Items >
+                        <!--<ComboBox.Items >
                         <ComboBoxItem Content="{Binding}" />
                     </ComboBox.Items>-->
 
-                </ComboBox>
+                    </ComboBox>
+                </Border>
+                <Border Background="#6d8963"  Grid.Row="4" >
+                    <TextBox PlaceholderText="Add Description"/>
+                </Border>
 
-                <TextBlock Text="Description" Grid.Row="5" Style="{StaticResource LabelTextBlockExpeneStyle}"/>
-                <TextBox   Grid.Row="6" Style="{StaticResource LabelTextBoxExpenseStyle}"/>
-
-                <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center" >
-                    <TextBlock Text="{Binding Source={StaticResource dateTimeTaker}, Path=Now}"  Style="{StaticResource LabelTextBlockExpeneStyle}"/>
-                    <!--<TextBlock Text=" location" Style="{StaticResource LabelTextBlockExpeneStyle}"/>-->
-                </StackPanel>
-
-                <Grid Grid.Row="9"  HorizontalAlignment="Stretch" >
+                <Grid Grid.Row="5"  HorizontalAlignment="Stretch" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
@@ -74,6 +73,10 @@
                     <Button Content="Confirm" Grid.Column="1"  Click="OnAddButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
                 </Grid>
 
+                <StackPanel  Grid.Row="8"  Background="#323f2d" Margin="0,0,-20,0" Height="30"   >
+                    <TextBlock Text="{Binding Source={StaticResource dateTimeTaker}, Path=Now}"  Style="{StaticResource LabelTextBlockExpenseStyle}"/>
+                    <!--<TextBlock Text=" location" Style="{StaticResource LabelTextBlockExpenseStyle}"/>-->
+                </StackPanel>
             </Grid>
         </Grid>
     </Grid>
