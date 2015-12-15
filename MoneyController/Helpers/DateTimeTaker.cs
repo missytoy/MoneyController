@@ -1,9 +1,7 @@
-﻿using System;
-using System.ComponentModel;
-using Windows.UI.Xaml;
-
-namespace MoneyController
+﻿namespace MoneyController
 {
+    using System;
+
     public class DateTimeTaker 
     {
         public string Now
