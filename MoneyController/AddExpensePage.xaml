@@ -57,7 +57,7 @@
 
                 <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center" >
                     <TextBlock Text="{Binding Source={StaticResource dateTimeTaker}, Path=Now}"  Style="{StaticResource LabelTextBlockExpeneStyle}"/>
-                    <!--<TextBlock Text=" location" Style="{StaticResource LabelTextBlockExpeneStyle}"/>-->
+                    <TextBlock Text=" location" Style="{StaticResource LabelTextBlockExpeneStyle}"/>
                 </StackPanel>
 
                 <Button Grid.Row="8" Content="Add photo"/>

@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace MoneyController.ViewModels
+﻿namespace MoneyController.ViewModels
 {
+    using System;
+
     public class ExpenseViewModel : ViewModelBase
     {
         public decimal Price { get; set; }

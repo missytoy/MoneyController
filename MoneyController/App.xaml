@@ -15,13 +15,13 @@
         <Style TargetType="Button" >
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="Margin" Value="0,40,0,10"/>
-            <Setter Property="Background" Value="#00dafc"/>
+            <Setter Property="Background" Value="#008cff"/>
         </Style>
 
         <Style x:Key="CancelandAddButtonStyle" TargetType="Button">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="Margin" Value="5,10,5,0"/>
-            <Setter Property="Background" Value="#00dafc"/>
+            <Setter Property="Background" Value="#008cff"/>
         </Style>
 
         <Style x:Key="LabelTextBoxExpenseStyle" TargetType="TextBox" >
