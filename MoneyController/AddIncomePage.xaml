@@ -10,6 +10,7 @@
 
     <Page.Resources>
         <local:EnumTypeToListConverter x:Key="enumConverter"></local:EnumTypeToListConverter>
+        <local:DateTimeTaker x:Key="dateTimeTaker" />
     </Page.Resources>
     
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -59,7 +60,7 @@
                 <TextBox   Grid.Row="6" Style="{StaticResource LabelTextBoxExpenseStyle}"/>
 
                 <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center" >
-                    <TextBlock Text="13 march 2015"  Style="{StaticResource LabelTextBlockExpeneStyle}"/>
+                    <TextBlock Text="{Binding Source={StaticResource dateTimeTaker}, Path=Now}"  Style="{StaticResource LabelTextBlockExpeneStyle}"/>
                 </StackPanel>
 
                 <Grid Grid.Row="9"  HorizontalAlignment="Stretch" >
