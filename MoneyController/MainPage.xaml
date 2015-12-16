@@ -29,7 +29,6 @@
                 <Button Content="Analytics" Grid.Row="3" Click="OnAnalyticsButtonClick" />
                 <Button Content="Options" Grid.Row="4" Click="OnOptionsButtonClick" />
 
-
             </Grid>
         </Grid>
     </Grid>

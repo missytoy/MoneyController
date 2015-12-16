@@ -9,7 +9,8 @@
         <x:String x:Key="AppName">Money Controller</x:String>
 
         <Style x:Key="LabelTexBlockStyle" TargetType="TextBlock" >
-            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
 
         <Style TargetType="Button" >
@@ -28,7 +29,8 @@
         </Style>
 
         <Style  TargetType="Border">
-            <Setter Property="Background" Value="#6d8963"/>
+            <Setter Property="Background" Value="#364431"/>
+            <!--<Setter Property="Background" Value="#6d8963"/>-->
             <Setter Property="Margin" Value="0,20,0,20"/>
         </Style>
         

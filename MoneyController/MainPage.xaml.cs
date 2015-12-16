@@ -39,7 +39,7 @@ namespace MoneyController
 
         private void OnAnalyticsButtonClick(object sender, RoutedEventArgs e)
         {
-            //TODO: this.Frame.Navigate(typeof(Analystic)); //charts for day,for month, for year...
+            this.Frame.Navigate(typeof(AnalyticsPage)); //TODO:  //charts for day,for month, for year...
         }
 
         private void OnOptionsButtonClick(object sender, RoutedEventArgs e)

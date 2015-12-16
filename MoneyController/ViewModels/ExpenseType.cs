@@ -2,7 +2,7 @@
 {
     public enum ExpenseType
     {
-        FoodAndDrinks = 0,
+        Food  = 0,
         Electronics = 1,
         Family = 2,
         Health = 3,
@@ -15,6 +15,7 @@
         Sports = 10,
         Gifts = 11,
         Repair = 12,
-        Others = 13
+        Clothes = 13,
+        Others = 14
     }
 }

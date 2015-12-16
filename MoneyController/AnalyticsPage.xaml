@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="MoneyController.AnalyticsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MoneyController"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <!--TODO: put pie chart instead of this-->
+    
+    <Grid Style="{StaticResource LayoutGridStyle}">
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Margin="29,0,0,0">
+                    <TextBlock Text="Analytics" 
+                               Style="{StaticResource TitleStyle}" />
+                </StackPanel>
+
+                <Grid Grid.Row="1"  HorizontalAlignment="Stretch" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Show all incomes" Grid.Column="0" Click="OnShowAllIncomesButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
+                    <Button Content="Show all expences" Grid.Column="1"  Click="OnShowAllExpensesButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
+                </Grid>
+
+                <Button Content="Cancel" Grid.Row="3" Click="OnCancelButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
+
+                
+                <ScrollViewer Height="200"  Name="scrollViewer" Grid.Row="2" Visibility="Collapsed" >
+                    <Border>
+                        <TextBlock  Name="resultTry" Style="{StaticResource LabelTexBlockStyle}" />
+                    </Border>
+                </ScrollViewer>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

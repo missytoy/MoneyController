@@ -39,29 +39,31 @@
                 </StackPanel>
 
                 <Border Background="#6d8963"  Grid.Row="1" >
-                    <TextBox PlaceholderText="Add Amount"/>
+                    <TextBox PlaceholderText="Add Amount"  Name="AmountIncomeTextBox"/>
                 </Border>
 
                 <Border Background="#323f2d"  Grid.Row="2" Margin="0,0,0,-20">
                     <TextBlock Text="Choose category"  Style="{StaticResource LabelTextBlockExpenseStyle}" ></TextBlock>
-                </Border>
-
+                </Border>
+            
                 <Border Background="#6d8963" Grid.Row="3" >
-                    <ComboBox x:Name="ComboBoxPeople"   
+
+                    <ComboBox x:Name="ComboBoxIncome"   
                              ItemsSource="{Binding IncomeCategoryTypes, Converter={StaticResource enumConverter}}"
                              SelectedItem="{Binding IncomeCategory, Mode=TwoWay}"
                              IsDropDownOpen="True"
-                             IsEnabled="True"
-                             Height="30" HorizontalAlignment="Stretch" >
+                             IsEnabled="True" 
+                             Height="30"  
+                             HorizontalAlignment="Stretch"  >
 
-                        <!--<ComboBox.Items >
+                    <!--<ComboBox.Items > 
                         <ComboBoxItem Content="{Binding}" />
                     </ComboBox.Items>-->
 
                     </ComboBox>
                 </Border>
                 <Border Background="#6d8963"  Grid.Row="4" >
-                    <TextBox PlaceholderText="Add Description"/>
+                    <TextBox PlaceholderText="Add Description" Name="DescriptionIncomeTextBox" />
                 </Border>
 
                 <Grid Grid.Row="5"  HorizontalAlignment="Stretch" >

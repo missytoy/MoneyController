@@ -1,5 +1,4 @@
 ﻿using MoneyController.Models;
-using MoneyController.ViewModels;
 using SQLite.Net;
 using SQLite.Net.Async;
 using SQLite.Net.Platform.WinRT;
@@ -8,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -27,40 +27,40 @@ namespace MoneyController
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class AddIncomePage : Page
+    public sealed partial class AnalyticsPage : Page
     {
-        public AddIncomePage()
+        public AnalyticsPage()
         {
             this.InitializeComponent();
-            this.InitAsync();
-            this.ViewModel = new IncomeViewModel();
         }
 
-        public IncomeViewModel ViewModel
+        private async void OnShowAllExpensesButtonClick(object sender, RoutedEventArgs e)
         {
-            get { return this.DataContext as IncomeViewModel; }
-            set { this.DataContext = value; }
-        }
-
-        private async void OnAddButtonClick(object sender, RoutedEventArgs e)
-        {
-            var price = 0;
-            int.TryParse(this.AmountIncomeTextBox.Text, out price);
-
-            var incomeCategoryText = ComboBoxIncome.SelectedValue == null ? "Other" : ComboBoxIncome.SelectedValue.ToString();
-
-            var item = new IncomeItem
+            this.InitAsyncExpense();
+            var expenseData = await this.GetAllExpensesAsync();
+            var expenseDataAsString = new StringBuilder();
+            foreach (var expenseItem in expenseData)
             {
-                Price = price,
-                Description = this.DescriptionIncomeTextBox.Text ,
-                DateOfIncome = DateTime.Now,
-                IncomeCategory = incomeCategoryText
+                expenseDataAsString.AppendLine(expenseItem.ToString());
+            }
 
-            };
+            this.resultTry.Text = expenseDataAsString.ToString();
+            this.scrollViewer.Visibility = Visibility.Visible;
 
-            await this.InsertIncomeAsync(item);
+        }
 
-            this.Frame.Navigate(typeof(MainPage));
+        private async void OnShowAllIncomesButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.InitAsyncIncome();
+            var incomeData = await this.GetAllIncomesAsync();
+            var incomeDataAsString = new StringBuilder();
+            foreach (var incomeItem in incomeData)
+            {
+                incomeDataAsString.AppendLine(incomeItem.ToString());
+            }
+
+            this.resultTry.Text = incomeDataAsString.ToString();
+            this.scrollViewer.Visibility = Visibility.Visible;
         }
 
         private void OnCancelButtonClick(object sender, RoutedEventArgs e)
@@ -84,23 +84,35 @@ namespace MoneyController
             return asyncConnection;
         }
 
-        private async void InitAsync()
+
+        private async void InitAsyncExpense()
+        {
+            var connection = this.GetDbConnectionAsync();
+            await connection.CreateTableAsync<ExpenseItem>();
+        }
+
+        private async void InitAsyncIncome()
         {
             var connection = this.GetDbConnectionAsync();
             await connection.CreateTableAsync<IncomeItem>();
         }
 
-        private async Task<int> InsertIncomeAsync(IncomeItem item)
+
+        private async Task<List<ExpenseItem>> GetAllExpensesAsync()
         {
             var connection = this.GetDbConnectionAsync();
-            var result = await connection.InsertAsync(item);
+            var result = await connection.Table<ExpenseItem>()
+                    .OrderByDescending(x => x.DateAndTimeOfExpence)
+                    .ToListAsync();
             return result;
         }
 
         private async Task<List<IncomeItem>> GetAllIncomesAsync()
         {
             var connection = this.GetDbConnectionAsync();
-            var result = await connection.Table<IncomeItem>().ToListAsync();
+            var result = await connection.Table<IncomeItem>()
+                        .OrderByDescending(x => x.DateOfIncome)
+                        .ToListAsync();
             return result;
         }
     }
