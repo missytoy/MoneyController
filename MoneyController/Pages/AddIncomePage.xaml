@@ -1,0 +1,85 @@
+﻿<Page
+    x:Class="MoneyController.AddIncomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MoneyController"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:MoneyController.ViewModels"
+    xmlns:helpers="using:MoneyController.Helpers"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <local:EnumTypeToListConverter x:Key="enumConverter"></local:EnumTypeToListConverter>
+        <local:DateTimeTaker x:Key="dateTimeTaker" />
+    </Page.Resources>
+
+    <Grid Style="{StaticResource LayoutGridStyle}" >
+        <Grid x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <Grid Height="631" VerticalAlignment="Top">
+
+                <!--<Grid.DataContext>
+                    <viewModel:IncomeViewModel></viewModel:IncomeViewModel>
+                </Grid.DataContext>-->
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Margin="19,0,0,0">
+                    <TextBlock Text="Add Income"  Style="{StaticResource TitleStyle}"/>
+                </StackPanel>
+
+                <Border Background="#6d8963"  Grid.Row="1" >
+                    <TextBox PlaceholderText="Add Amount"  Name="AmountIncomeTextBox"/>
+                </Border>
+
+                <Border Background="#323f2d"  Grid.Row="2" Margin="0,0,0,-20">
+                    <TextBlock Text="Choose category"  Style="{StaticResource LabelTextBlockExpenseStyle}" ></TextBlock>
+                </Border>
+            
+                <Border Background="#6d8963" Grid.Row="3" >
+
+                    <ComboBox x:Name="ComboBoxIncome"   
+                             ItemsSource="{Binding IncomeCategoryTypes, Converter={StaticResource enumConverter}}"
+                             SelectedItem="{Binding IncomeCategory, Mode=TwoWay}"
+                             IsDropDownOpen="True"
+                             IsEnabled="True" 
+                             Height="30"  
+                             HorizontalAlignment="Stretch"  >
+
+                    <!--<ComboBox.Items > 
+                        <ComboBoxItem Content="{Binding}" />
+                    </ComboBox.Items>-->
+
+                    </ComboBox>
+                </Border>
+                <Border Background="#6d8963"  Grid.Row="4" >
+                    <TextBox PlaceholderText="Add Description" Name="DescriptionIncomeTextBox" />
+                </Border>
+
+                <Grid Grid.Row="5"  HorizontalAlignment="Stretch" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Cancel" Grid.Column="0" Click="OnCancelButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
+                    <Button Content="Confirm" Grid.Column="1"  Click="OnAddButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
+                </Grid>
+
+                <StackPanel  Grid.Row="8"  Background="#323f2d" Margin="0,0,-20,0" Height="30"   >
+                    <TextBlock Text="{Binding Source={StaticResource dateTimeTaker}, Path=Now}"  Style="{StaticResource LabelTextBlockExpenseStyle}"/>
+                    <!--<TextBlock Text=" location" Style="{StaticResource LabelTextBlockExpenseStyle}"/>-->
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
