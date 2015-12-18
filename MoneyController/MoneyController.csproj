@@ -96,6 +96,8 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\GoogleApiGPSHelper.cs" />
+    <Compile Include="Helpers\GooglePlacesApiSerialisationClasses\Place.cs" />
     <Compile Include="Helpers\Notification.cs" />
     <Compile Include="Pages\AddExpensePage.xaml.cs">
       <DependentUpon>AddExpensePage.xaml</DependentUpon>
@@ -172,6 +174,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\CategoryLetters\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
