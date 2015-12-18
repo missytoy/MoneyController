@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="fcead4d3-bb20-4c5f-bcb5-76eafbc468fd" Publisher="CN=Miss" Version="1.0.0.0" />
+  <Identity Name="fcead4d3-bb20-4c5f-bcb5-76eafbc468fd" Publisher="CN=SashoSosam" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="fcead4d3-bb20-4c5f-bcb5-76eafbc468fd" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>MoneyController</DisplayName>
