@@ -18,11 +18,15 @@ namespace MoneyController
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
     using System.Text;
+    using Windows.Devices.Geolocation;
+
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class AddExpensePage : Page
     {
+        static Geolocator locator = new Geolocator();
+
         public AddExpensePage()
         {
             this.InitializeComponent();
@@ -40,7 +44,26 @@ namespace MoneyController
         {
             var price = 0;
             int.TryParse(this.AmountTextBox.Text, out price);
-            
+
+            var accessStatus = await Geolocator.RequestAccessAsync();
+
+            var currentLocation = string.Empty;
+            var latitude = string.Empty;
+            var longitude=string.Empty;
+
+            if (accessStatus != GeolocationAccessStatus.Allowed)
+            {
+                throw new Exception("Problem with location permissions or access");
+            }
+            else
+            {
+                Geoposition geoposition = await locator.GetGeopositionAsync();
+                latitude = geoposition.Coordinate.Latitude.ToString();
+                longitude =geoposition.Coordinate.Longitude.ToString();
+            }
+
+            currentLocation = latitude + ","+ longitude;
+
             var expenseCategoryText = ComboBoxExpense.SelectedValue == null ? "Other" : ComboBoxExpense.SelectedValue.ToString();
 
 
@@ -50,7 +73,7 @@ namespace MoneyController
                 Description = this.DescriptionTextBox.Text,
                 DateAndTimeOfExpence = DateTime.Now,
                 CategoryExpense = expenseCategoryText,
-                Gelocation = LocationTextBox.Text, //delete location textbox from page and take the gelocation from phone
+                Gelocation = currentLocation, //LocationTextBox.Text, //delete location textbox from page and take the gelocation from phone
                 Photo = TakeDefaultPhotoDependingOnTheCategory(expenseCategoryText) //TODO: fix the button add photo and put the photo here
 
             };
@@ -82,7 +105,10 @@ namespace MoneyController
 
         private void OnCancelButtonClick(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            if (this.Frame.CanGoBack)
+            {
+                this.Frame.GoBack();
+            }
         }
 
 

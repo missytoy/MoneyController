@@ -7,11 +7,13 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Notifications;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using NotificationsExtensions.Tiles;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -44,6 +46,29 @@ namespace MoneyController
 
         private void OnOptionsButtonClick(object sender, RoutedEventArgs e)
         {
+            TileBindingContentAdaptive bindingContent = new TileBindingContentAdaptive()
+            {
+                PeekImage = new TilePeekImage()
+                {
+                    Source = new TileImageSource("Assets/PeekImage.jpg")
+                },
+
+                Children =
+    {
+        new TileText()
+        {
+            Text = "Notifications Extensions",
+            Style = TileTextStyle.Body
+        },
+
+        new TileText()
+        {
+            Text = "Generate notifications easily!",
+            Wrap = true,
+            Style = TileTextStyle.CaptionSubtle
+        }
+    }
+            };
             //TODO: this.Frame.Navigate(typeof(Options)); //stop notifications
         }
     }
