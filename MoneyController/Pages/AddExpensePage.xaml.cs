@@ -50,14 +50,34 @@ namespace MoneyController
                 Description = this.DescriptionTextBox.Text,
                 DateAndTimeOfExpence = DateTime.Now,
                 CategoryExpense = expenseCategoryText,
-                Gelocation = LocationTextBox.Text,
-                Photo = "TODO:take picture or put letter of the category like picture "
+                Gelocation = LocationTextBox.Text, //delete location textbox from page and take the gelocation from phone
+                Photo = TakeDefaultPhotoDependingOnTheCategory(expenseCategoryText) //TODO: fix the button add photo and put the photo here
 
             };
 
             await this.InsertExpenseAsync(item);
 
             this.Frame.Navigate(typeof(MainPage));
+        }
+
+        private string TakeDefaultPhotoDependingOnTheCategory(string categoryExpense)
+        {
+            switch (categoryExpense[0])
+            {
+                case 'F': return "/Assets/CategoryLetters/fLetter";
+                case 'E': return "/Assets/CategoryLetters/eLetter";
+                case 'H': return "/Assets/CategoryLetters/hLetter";
+                case 'T': return "/Assets/CategoryLetters/tLetter";
+                case 'B': return "/Assets/CategoryLetters/bLetter";
+                case 'L': return "/Assets/CategoryLetters/lLetter";
+                case 'P': return "/Assets/CategoryLetters/pLetter";
+                case 'S': return "/Assets/CategoryLetters/sLetter";
+                case 'R': return "/Assets/CategoryLetters/rLetter";
+                case 'C': return "/Assets/CategoryLetters/cLetter";
+                case 'I': return "/Assets/CategoryLetters/iLetter";
+                case 'O': return "/Assets/CategoryLetters/oLetter";
+                default: return "/Assets/CategoryLetters/oLetter";
+            }
         }
 
         private void OnCancelButtonClick(object sender, RoutedEventArgs e)
