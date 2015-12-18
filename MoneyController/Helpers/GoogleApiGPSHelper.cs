@@ -1,15 +1,19 @@
 ﻿namespace MoneyController.Helpers
 {
+    using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
     using GooglePlacesApiSerialisationClasses;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-    using System.Collections.Generic;
+    using Windows.Devices.Geolocation;
+
     public class GoogleApiGPSHelper
     {
         private const string ApiKey = "AIzaSyB0X8RR2WOkk7NbNZEisvj2C7o3TAEcraI";
         private const string RadiusInMeters = "50";
+        
+        // TODO: get location https://msdn.microsoft.com/en-us/library/windows/desktop/mt219698.aspx
 
         private async Task<string> GoogleApiPlacesResult(string latitude, string longitude)
         {
