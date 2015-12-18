@@ -65,11 +65,11 @@
 
                 <StackPanel Grid.Row="8" Background="#323f2d"  HorizontalAlignment="Stretch" >
                     <TextBlock Text="{Binding Source={StaticResource dateTimeTaker}, Path=Now}"  Style="{StaticResource LabelTextBlockExpenseStyle}"/>
-                    <TextBox PlaceholderText="Location" Style="{StaticResource LabelTextBlockExpenseStyle}" Name="LocationTextBox"/>
-                    <ComboBox x:Name="ComboBoxGPS"
+                    <!--<TextBox PlaceholderText="Location" Style="{StaticResource LabelTextBlockExpenseStyle}" x:Name="LocationTextBox"/>-->
+                    <!--<ComboBox x:Name="ComboBoxGPS"
                               PlaceholderText="Loading places from GPS.." 
                               Style="{StaticResource LabelTextBlockExpenseStyle}" 
-                              HorizontalAlignment="Stretch"/>
+                              HorizontalAlignment="Stretch"/>-->
                 </StackPanel>
 
                 <Button Grid.Row="5" Content="Add photo" Name="PhotoTextBox"/>
