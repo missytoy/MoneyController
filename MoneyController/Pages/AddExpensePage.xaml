@@ -41,8 +41,8 @@
                     <TextBlock Text="Choose category"  Style="{StaticResource LabelTextBlockExpenseStyle}"/>
                 </Border>
 
-               
-            
+
+
                 <Border Background="#6d8963"  Grid.Row="3">
                     <ComboBox x:Name="ComboBoxExpense"  
                           ItemsSource="{Binding ExpenseCategoryType, Converter={StaticResource enumConverter}}"
@@ -52,20 +52,24 @@
                           Height="30" 
                           HorizontalAlignment="Stretch" >
 
-                    <!--<ComboBox.Items >
+                        <!--<ComboBox.Items >
                         <ComboBoxItem Content="{Binding}" />
                     </ComboBox.Items>-->
-                </ComboBox>
+                    </ComboBox>
                 </Border>
-                
-                
+
+
                 <Border Background="#6d8963"   Grid.Row="4">
                     <TextBox PlaceholderText="Add Description" Name="DescriptionTextBox"/>
                 </Border>
 
                 <StackPanel Grid.Row="8" Background="#323f2d"  HorizontalAlignment="Stretch" >
                     <TextBlock Text="{Binding Source={StaticResource dateTimeTaker}, Path=Now}"  Style="{StaticResource LabelTextBlockExpenseStyle}"/>
-                    <TextBlock Text=" location" Style="{StaticResource LabelTextBlockExpenseStyle}" Name="LocationTextBox"/>
+                    <TextBox PlaceholderText="Location" Style="{StaticResource LabelTextBlockExpenseStyle}" Name="LocationTextBox"/>
+                    <ComboBox x:Name="ComboBoxGPS"
+                              PlaceholderText="Loading places from GPS.." 
+                              Style="{StaticResource LabelTextBlockExpenseStyle}" 
+                              HorizontalAlignment="Stretch"/>
                 </StackPanel>
 
                 <Button Grid.Row="5" Content="Add photo" Name="PhotoTextBox"/>
