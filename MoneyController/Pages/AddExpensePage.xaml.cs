@@ -3,7 +3,6 @@
 namespace MoneyController
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
     using System.Threading.Tasks;
 
@@ -19,7 +18,7 @@ namespace MoneyController
     using Windows.UI.Xaml.Controls;
     using System.Text;
     using Windows.Devices.Geolocation;
-
+    using Helpers;
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
@@ -44,6 +43,11 @@ namespace MoneyController
         {
             var price = 0;
             int.TryParse(this.AmountTextBox.Text, out price);
+            if (price < 0)
+            {
+                Notification.ShowNotification("Amount cannot be less than zero");
+                return;
+            }
 
             var accessStatus = await Geolocator.RequestAccessAsync();
 
@@ -53,7 +57,11 @@ namespace MoneyController
 
             if (accessStatus != GeolocationAccessStatus.Allowed)
             {
-                throw new Exception("Problem with location permissions or access");
+                Notification.ShowNotification("Problem with location permissions or access");
+                if (this.Frame.CanGoBack)
+                {
+                    this.Frame.GoBack();
+                }
             }
             else
             {
@@ -79,7 +87,7 @@ namespace MoneyController
             };
 
             await this.InsertExpenseAsync(item);
-
+            Notification.ShowNotification("New expense added");
             this.Frame.Navigate(typeof(MainPage));
         }
 

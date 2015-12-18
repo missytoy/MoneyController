@@ -96,6 +96,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\Notification.cs" />
     <Compile Include="Pages\AddExpensePage.xaml.cs">
       <DependentUpon>AddExpensePage.xaml</DependentUpon>
     </Compile>

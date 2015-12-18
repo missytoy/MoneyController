@@ -1,4 +1,5 @@
-﻿using MoneyController.Models;
+﻿using MoneyController.Helpers;
+using MoneyController.Models;
 using MoneyController.ViewModels;
 using SQLite.Net;
 using SQLite.Net.Async;
@@ -47,6 +48,12 @@ namespace MoneyController
             var price = 0;
             int.TryParse(this.AmountIncomeTextBox.Text, out price);
 
+            if (price < 0)
+            {
+                Notification.ShowNotification("Amount cannot be less than zero");
+                return;
+            }
+
             var incomeCategoryText = ComboBoxIncome.SelectedValue == null ? "Other" : ComboBoxIncome.SelectedValue.ToString();
 
             var item = new IncomeItem
@@ -59,7 +66,7 @@ namespace MoneyController
             };
 
             await this.InsertIncomeAsync(item);
-
+            Notification.ShowNotification("New income added");
             this.Frame.Navigate(typeof(MainPage));
         }
 
