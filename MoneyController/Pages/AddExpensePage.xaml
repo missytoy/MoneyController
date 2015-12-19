@@ -71,8 +71,18 @@
                               HorizontalAlignment="Stretch" Background="#66914E38" />
                 </StackPanel>
 
-                <Button Grid.Row="5" Content="Add photo" Name="PhotoTextBox"/>
-
+                <Border  Grid.Row="5"  Height="60" Width="150"> 
+                    <Button Content="Add photo"  
+                            Name="PhotoButton" 
+                            Margin="0" 
+                             Height="60" Width="150"
+                            Click="OnAddPhotoButtonClick">
+                    <Button.Background>
+                            <ImageBrush Stretch="Fill" ImageSource="{Binding Photo, Mode=TwoWay}" />
+                    </Button.Background>
+                </Button>
+                </Border>
+                
                 <Grid Grid.Row="6"  HorizontalAlignment="Stretch" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>

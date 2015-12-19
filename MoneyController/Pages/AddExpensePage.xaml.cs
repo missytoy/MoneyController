@@ -19,9 +19,9 @@ namespace MoneyController
     using System.Text;
     using Windows.Devices.Geolocation;
     using Helpers;
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+    using Windows.Media.Capture;
+    using Windows.UI.Xaml.Media.Imaging;
+
     public sealed partial class AddExpensePage : Page
     {
         static Geolocator locator = new Geolocator();
@@ -74,6 +74,7 @@ namespace MoneyController
 
             var expenseCategoryText = ComboBoxExpense.SelectedValue == null ? "Other" : ComboBoxExpense.SelectedValue.ToString();
 
+            var photo = this.ViewModel.Photo;
 
             var item = new ExpenseItem
             {
@@ -82,7 +83,7 @@ namespace MoneyController
                 DateAndTimeOfExpence = this.dataPicker.Date.DateTime,
                 CategoryExpense = expenseCategoryText,
                 Gelocation = currentLocation, //LocationTextBox.Text, //delete location textbox from page and take the gelocation from phone
-                Photo = TakeDefaultPhotoDependingOnTheCategory(expenseCategoryText) //TODO: fix the button add photo and put the photo here
+                Photo = photo == null ? TakeDefaultPhotoDependingOnTheCategory(expenseCategoryText) : photo //TODO: fix the button add photo and put the photo here
 
             };
 
@@ -147,6 +148,22 @@ namespace MoneyController
             var connection = this.GetDbConnectionAsync();
             var result = await connection.InsertAsync(item);
             return result;
+        }
+
+        private void OnAddPhotoButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.InitCamera();
+        }
+
+        private async void InitCamera()
+        {
+            var camera = new CameraCaptureUI();
+
+            var photo = await camera.CaptureFileAsync(CameraCaptureUIMode.Photo);
+            if (photo != null)
+            {
+                this.ViewModel.Photo = photo.Path;
+            }
         }
     }
 }
