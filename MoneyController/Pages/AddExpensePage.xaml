@@ -70,15 +70,14 @@
                          Name="PlaceTextBox" 
                          Text="{Binding Place,
                                         Mode=TwoWay}" />
-
+                    <Button Name="LoadLocationsButton" Content="Load places from GPS location." Margin="0" Visibility="Visible" Click="LoadLocationsButton_Click"/>
                     <ComboBox Name="ComboBoxGPS"
                               PlaceholderText="DoubleTap here to get places from GPS location."
                               IsDoubleTapEnabled="True"
-                              IsEnabled="False"
+                              Visibility="Collapsed"
                               HorizontalAlignment="Stretch" 
                               Background="#66600000" 
                               ItemsSource="{Binding Path=Places, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                              DoubleTapped="OnComboBoxGPSClick" 
                               SelectionChanged="ComboBoxGPS_SelectionChanged" >
                         <ComboBox.ItemTemplate>
                             <DataTemplate>

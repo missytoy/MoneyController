@@ -141,9 +141,9 @@ namespace MoneyController
             }
         }
 
-        private async void OnComboBoxGPSClick(object sender, RoutedEventArgs e)
+        private async void LoadLocationsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!this.ComboBoxGPS.IsEnabled)
+            if (this.ComboBoxGPS.Visibility == Visibility.Collapsed)
             {
                 var accessStatus = await Geolocator.RequestAccessAsync();
 
@@ -155,10 +155,6 @@ namespace MoneyController
                 if (accessStatus != GeolocationAccessStatus.Allowed)
                 {
                     Notification.ShowNotification("Problem with location permissions or access");
-                    if (this.Frame.CanGoBack)
-                    {
-                        this.Frame.GoBack();
-                    }
                 }
                 else
                 {
@@ -176,7 +172,8 @@ namespace MoneyController
                         this.ComboBoxGPS.PlaceholderText = "Loading done: Choose place!";
                         this.ComboBoxGPS.Background = PlacesStackPanel.Background;
                         ViewModel.Places = placesList;
-                        this.ComboBoxGPS.IsEnabled = true;
+                        this.ComboBoxGPS.Visibility = Visibility.Visible;
+                        this.LoadLocationsButton.Visibility = Visibility.Collapsed;
                     }
                 }
             }
