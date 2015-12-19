@@ -26,7 +26,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
@@ -47,7 +47,7 @@
 
 
                 <Border Background="#6d8963"  Grid.Row="3">
-                    <ComboBox x:Name="ComboBoxExpense"  
+                    <ComboBox Name="ComboBoxExpense"  
                           ItemsSource="{Binding ExpenseCategoryType, Converter={StaticResource enumConverter}}"
                           SelectedItem="{Binding CategoryExpense, Mode=TwoWay}"
                           IsDropDownOpen="True"
@@ -55,32 +55,32 @@
                           Height="30" 
                           HorizontalAlignment="Stretch" >
 
-                        <!--<ComboBox.Items >
-                        <ComboBoxItem Content="{Binding}" />
-                    </ComboBox.Items>-->
                     </ComboBox>
                 </Border>
 
 
-                <StackPanel Grid.Row="4" Background="#6d8963" HorizontalAlignment="Stretch" DataContext="{StaticResource expenseViewModel}" />
-                <TextBox PlaceholderText="Add Description" 
+                <Border Grid.Row="4" DataContext="{StaticResource expenseViewModel}" >
+                    <TextBox PlaceholderText="Add Description" 
                          Name="DescriptionTextBox" 
-                         Text="{Binding Description, 
-                                Mode=TwoWay,
-                                UpdateSourceTrigger=PropertyChanged}" />
-                <TextBox PlaceholderText="Place" 
+                         Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
+
+                </Border>
+                <StackPanel Grid.Row="5" Background="#6d8963" HorizontalAlignment="Stretch" DataContext="{StaticResource expenseViewModel}" >
+                        <TextBox PlaceholderText="Place" 
                          Name="PlaceTextBox" 
                          Text="{Binding Place,
                                         Mode=TwoWay,
                                         UpdateSourceTrigger=PropertyChanged}" />
 
-                <ComboBox Name="ComboBoxGPS"
+                    <ComboBox Name="ComboBoxGPS"
                               PlaceholderText="Loading places from GPS.."
                               IsEnabled="False"
-                              HorizontalAlignment="Stretch" Background="#66914E38" />
+                              HorizontalAlignment="Stretch" 
+                              Background="#66914E38" 
+                              ItemsSource="{Binding Places, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
 
-
-                <Border  Grid.Row="5"  Height="60" Width="150"> 
+                <Border  Grid.Row="6"  Height="60" Width="150"> 
                     <Button Content="Add photo"  
                             Name="PhotoButton" 
                             Margin="0" 
@@ -92,7 +92,9 @@
                 </Button>
                 </Border>
                 
-                <Grid Grid.Row="6"  HorizontalAlignment="Stretch" >
+                <DatePicker  Name="dataPicker" Background="#6d8963" Grid.Row="8" HorizontalAlignment="Stretch"  />
+                
+                <Grid Grid.Row="10"  HorizontalAlignment="Stretch" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
@@ -101,13 +103,6 @@
                     <Button Content="Confirm" Grid.Column="1"  Click="OnAddButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
                 </Grid>
 
-                <DatePicker  Name="dataPicker" Background="#6d8963" Grid.Row="8" HorizontalAlignment="Stretch"  />
-                <!--<views:DateTimePicker Grid.Row="8"   x:Name="dataPicker" />-->
-
-                <!--<StackPanel Grid.Row="8" Background="#323f2d"  HorizontalAlignment="Stretch" >
-                    <TextBlock Text="{Binding Source={StaticResource dateTimeTaker}, Path=Now}"
-                               Style="{StaticResource LabelTextBlockExpenseStyle}"/>
-                </StackPanel>-->
 
             </Grid>
         </Grid>
