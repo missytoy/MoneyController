@@ -9,6 +9,53 @@
 
     <!--TODO: put pie chart instead of this-->
 
+    <Page.Resources>
+        <DataTemplate x:Key="expensesTemplate">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding Photo}" 
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.RowSpan="3"/>
+                <TextBlock Text="{Binding CategoryExpenseString,Mode=TwoWay}"
+                        Grid.Row="0"
+                        Grid.Column="2"/>
+                <TextBlock Text="{Binding Price,Mode=TwoWay}"
+                        Grid.Row="1"
+                        Grid.Column="2"/>
+                <TextBlock Text="{Binding Description,Mode=TwoWay}"
+                        Grid.Row="2"
+                        Grid.Column="2"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="incomesTemplate">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Description,Mode=TwoWay}"
+                        Grid.Row="0"
+                        Grid.Column="0"/>
+                <TextBlock Text="{Binding Price,Mode=TwoWay}"
+                        Grid.Row="0"
+                        Grid.Column="1"/>
+                <TextBlock Text="{Binding CategoryIncomeString,Mode=TwoWay}"
+                        Grid.Row="0"
+                        Grid.Column="2"/>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
     
     <Grid Style="{StaticResource LayoutGridStyle}">
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
@@ -44,56 +91,22 @@
 
                 <Button Content="Cancel" Grid.Row="3" Click="OnCancelButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
 
-                <!--Visibility="Collapsed"-->
-                <ScrollViewer Height="200"  Name="scrollViewer" Grid.Row="2" >
+
+                <ScrollViewer Style="{StaticResource ScrollViewerStyle}" Name="scrollViewer" Grid.Row="2" >
+                        <Grid>
+                            <ListBox ItemsSource="{Binding ExpensesModel}"
+                                     ItemTemplate="{StaticResource expensesTemplate}"   />
+                        </Grid>
+                </ScrollViewer>
+
+                <ScrollViewer  Style="{StaticResource ScrollViewerStyle}" Name="scrollViewerIncomes" Grid.Row="2">
                     <Border>
                         <Grid>
-
-                            <ListBox ItemsSource="{Binding ExpensesModel}" >
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="1*"/>
-                                                <RowDefinition Height="1*"/>
-                                                <RowDefinition Height="1*"/>
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="150"/>
-                                                <ColumnDefinition Width="1*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Image Source="{Binding Photo}" 
-                                                      Grid.Row="0"
-                                                      Grid.Column="0"
-                                                      Grid.RowSpan="2"/>
-                                                               <TextBlock Text="{Binding CategoryExpenseString,Mode=TwoWay}"
-                                                          Grid.Row="0"
-                                                          Grid.Column="1"/>
-                                                               <TextBlock Text="{Binding Price,Mode=TwoWay}"
-                                                          Grid.Row="1"
-                                                          Grid.Column="1"/>
-                                                               <TextBlock Text="{Binding Description,Mode=TwoWay}"
-                                                          Grid.Row="2"
-                                                          Grid.Column="1"/>
-                                        </Grid>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                            
-                            <!--<ListBox ItemsSource="{Binding ExpensesModel}"
-                 ItemTemplate="{StaticResource expensesTemplate}"   />-->
-
-
-                            <!--<TextBlock  
-                            Name="resultTry" 
-                            Style="{StaticResource LabelTexBlockStyle}" />-->
-                            
+                            <ListBox ItemsSource="{Binding IncomesModel}"
+                                     ItemTemplate="{StaticResource incomesTemplate}"   />
                         </Grid>
                     </Border>
                 </ScrollViewer>
-                
-               
-                
 
             </Grid>
         </Grid>
