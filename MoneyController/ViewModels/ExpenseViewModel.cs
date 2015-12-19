@@ -7,6 +7,13 @@
     public class ExpenseViewModel : ViewModelBase
     {
         private string photo;
+        private string place;
+        private ObservableCollection<Place> places;
+
+        public ExpenseViewModel()
+        {
+            this.places = new ObservableCollection<Place>();
+        }
 
         public decimal Price { get; set; }
 
@@ -18,9 +25,31 @@
 
         public ExpenseType CategoryExpense { get; set; }
 
-        public string Place { get; set; }
+        public string Place
+        {
+            get
+            {
+                return this.place;
+            }
+            set
+            {
+                this.place = value;
+                this.RaiseProperyChange("Place");
+            }
+        }
 
-        public ObservableCollection<Place> Places { get; set; }
+        public ObservableCollection<Place> Places
+        {
+            get
+            {
+                return this.places;
+            }
+            set
+            {
+                this.places = value;
+                this.RaiseProperyChange("Places");
+            }
+        }
         public string Photo
         {
             get
