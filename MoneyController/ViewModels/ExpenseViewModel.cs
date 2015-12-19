@@ -26,12 +26,12 @@
             {
                 return model => new ExpenseViewModel
                 {
-                    Description=model.Description,
+                    Description = model.Description,
                     CategoryExpenseString = model.CategoryExpense,
                     DateAndTimeOfExpence = model.DateAndTimeOfExpence,
                     Photo = model.Photo,
                     Place = model.Gelocation,
-                    Price = model.Price                    
+                    Price = model.Price
                 };
             }
         }
@@ -47,6 +47,7 @@
         public ExpenseType CategoryExpense { get; set; }
 
         public string CategoryExpenseString { get; set; }
+
         public string Place
         {
             get
@@ -86,6 +87,7 @@
                 this.RaisePropertyChange("Places");
             }
         }
+
         public string Photo
         {
             get

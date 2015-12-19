@@ -28,78 +28,58 @@ namespace MoneyController
         public AnalyticsPage()
         {
             this.InitializeComponent();
-            this.ViewModel = new ExpensesContentViewModel();
+            
         }
-
-        public ExpensesContentViewModel ViewModel
-        {
-            get { return this.DataContext as ExpensesContentViewModel; }
-            set { this.DataContext = value; }
-        }
-
 
         private async void OnShowAllExpensesButtonClick(object sender, RoutedEventArgs e)
         {
+            this.DataContext = new ExpensesContentViewModel();
             this.InitAsyncExpense();
             var expenseData = await this.GetAllExpensesAsync();
-            this.ViewModel.ExpensesModel = expenseData.AsQueryable()
-                                            .Select(ExpenseViewModel.FromModel);
+            (this.DataContext as ExpensesContentViewModel).ExpensesModel = expenseData.AsQueryable()
+                                                                                      .Select(ExpenseViewModel.FromModel);
 
             this.scrollViewer.Visibility = Visibility.Visible;
-
+            this.scrollViewerIncomes.Visibility = Visibility.Collapsed;
         }
 
         private async void OnAnalyticsExpensesButtonClick(object sender, RoutedEventArgs e)
         {
+            this.DataContext = new ExpensesContentViewModel();
             this.InitAsyncExpense();
             var expenseData = await this.AnalyticsExpensesAsync();
-            var expenseDataAsString = new StringBuilder();
-            foreach (var expenseItem in expenseData)
-            {
-                expenseDataAsString.AppendLine($"Category: {expenseItem.CategoryExpense}, Amount: {expenseItem.Price}");
-            }
 
-           // this.resultTry.Text = expenseDataAsString.ToString();
+            (this.DataContext as ExpensesContentViewModel).ExpensesModel = expenseData.AsQueryable()
+                                .Select(ExpenseViewModel.FromModel);
+
             this.scrollViewer.Visibility = Visibility.Visible;
-
+            this.scrollViewerIncomes.Visibility = Visibility.Collapsed;
         }
 
         private async void OnShowAllIncomesButtonClick(object sender, RoutedEventArgs e)
         {
+            this.DataContext = new IncomeContentViewModel();
             this.InitAsyncIncome();
             var incomeData = await this.GetAllIncomesAsync();
             var incomeDataAsString = new StringBuilder();
+
+            (this.DataContext as IncomeContentViewModel).IncomeModels = incomeData.AsQueryable()
+                                                                                     .Select(IncomeViewModel.FromModel);
             
-            foreach (var incomeItem in incomeData)
-            {
-                if (incomeItem.Description == "")
-                {
-                    incomeDataAsString.AppendLine($"Category: {incomeItem.IncomeCategory}, Amount: {incomeItem.Price}");
-                }
-                else
-                {
-                    incomeDataAsString.AppendLine($"Description: {incomeItem.Description}, Category: {incomeItem.IncomeCategory}, Amount: {incomeItem.Price}");
-                }
-            }
-
-
-            //this.resultTry.Text = incomeDataAsString.ToString();
-            this.scrollViewer.Visibility = Visibility.Visible;
+            this.scrollViewer.Visibility = Visibility.Collapsed;
+            this.scrollViewerIncomes.Visibility = Visibility.Visible;
         }
 
         private async void OnAnalyticsIncomesButtonClick(object sender, RoutedEventArgs e)
         {
             this.InitAsyncIncome();
             var incomeData = await this.AnalyticsIncomesAsync();
-            var incomeDataAsString = new StringBuilder();
 
-            foreach (var incomeItem in incomeData)
-            {
-                incomeDataAsString.AppendLine($"Category: {incomeItem.IncomeCategory}, Amount: {incomeItem.Price}");
-            }
-            
-           // this.resultTry.Text = incomeDataAsString.ToString();
-            this.scrollViewer.Visibility = Visibility.Visible;
+           (this.DataContext as IncomeContentViewModel).IncomeModels = incomeData.AsQueryable()
+                             .Select(IncomeViewModel.FromModel);
+
+            this.scrollViewer.Visibility = Visibility.Collapsed;
+            this.scrollViewerIncomes.Visibility = Visibility.Visible;
         }
 
         private void OnCancelButtonClick(object sender, RoutedEventArgs e)
