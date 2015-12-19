@@ -6,29 +6,29 @@
 
     public class ExpensesContentViewModel : ViewModelBase
     {
-        public ObservableCollection<ExpenseViewModel> expenses;
+        public ObservableCollection<ExpenseViewModel> expensesModel;
 
-        public IEnumerable<ExpenseViewModel> Expenses
+        public IEnumerable<ExpenseViewModel> ExpensesModel
         {
             get
             {
-                if (this.expenses == null)
+                if (this.expensesModel == null)
                 {
-                    this.expenses = new ObservableCollection<ExpenseViewModel>();
+                    this.expensesModel = new ObservableCollection<ExpenseViewModel>();
                 }
 
-                return this.expenses;
+                return this.expensesModel;
             }
             set
             {
-                if (this.expenses == null)
+                if (this.expensesModel == null)
                 {
-                    this.expenses = new ObservableCollection<ExpenseViewModel>();
+                    this.expensesModel = new ObservableCollection<ExpenseViewModel>();
                 }
 
-                this.expenses.Clear();
+                this.expensesModel.Clear();
 
-                value.ForEach(this.expenses.Add);
+                value.ForEach(this.expensesModel.Add);
             }
         }
     }

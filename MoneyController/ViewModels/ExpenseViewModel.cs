@@ -27,6 +27,14 @@
 
         public ExpenseType CategoryExpense { get; set; }
 
+        public string CategoryExpenseString
+        {
+            get
+            {
+                return this.CategoryExpense.ToString();
+            }
+        }
+
         public string Place
         {
             get
