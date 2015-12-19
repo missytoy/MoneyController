@@ -62,36 +62,36 @@
                 </Border>
 
 
-                <StackPanel Grid.Row="4" Background="#6d8963" HorizontalAlignment="Stretch" DataContext="{StaticResource expenseViewModel}" />
-                <TextBox PlaceholderText="Add Description" 
+                <StackPanel Grid.Row="4" Background="#6d8963" HorizontalAlignment="Stretch" DataContext="{StaticResource expenseViewModel}" >
+                    <TextBox PlaceholderText="Add Description" 
                          Name="DescriptionTextBox" 
                          Text="{Binding Description, 
                                 Mode=TwoWay,
                                 UpdateSourceTrigger=PropertyChanged}" />
-                <TextBox PlaceholderText="Place" 
+                    <TextBox PlaceholderText="Place" 
                          Name="PlaceTextBox" 
                          Text="{Binding Place,
                                         Mode=TwoWay,
                                         UpdateSourceTrigger=PropertyChanged}" />
 
-                <ComboBox Name="ComboBoxGPS"
+                    <ComboBox Name="ComboBoxGPS"
                               PlaceholderText="Loading places from GPS.."
                               IsEnabled="False"
                               HorizontalAlignment="Stretch" Background="#66914E38" />
+                </StackPanel>
 
-
-                <Border  Grid.Row="5"  Height="60" Width="150"> 
+                <Border  Grid.Row="5"  Height="60" Width="150">
                     <Button Content="Add photo"  
                             Name="PhotoButton" 
                             Margin="0" 
                              Height="60" Width="150"
                             Click="OnAddPhotoButtonClick">
-                    <Button.Background>
+                        <Button.Background>
                             <ImageBrush Stretch="Fill" ImageSource="{Binding Photo, Mode=TwoWay}" />
-                    </Button.Background>
-                </Button>
+                        </Button.Background>
+                    </Button>
                 </Border>
-                
+
                 <Grid Grid.Row="6"  HorizontalAlignment="Stretch" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
