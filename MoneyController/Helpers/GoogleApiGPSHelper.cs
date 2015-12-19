@@ -1,6 +1,7 @@
 ﻿namespace MoneyController.Helpers
 {
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Net.Http;
     using System.Threading.Tasks;
     using Newtonsoft.Json.Linq;
@@ -13,11 +14,17 @@
         
         // TODO: get location https://msdn.microsoft.com/en-us/library/windows/desktop/mt219698.aspx
 
-        private async Task<string> GoogleApiPlacesResult(string latitude, string longitude)
+        public async Task<ObservableCollection<Place>> GetPlaces(string latitude, string longitude, string radiusInMeters = RadiusInMeters)
+        {
+            var googleApiData = await GoogleApiPlacesResult(latitude, longitude, radiusInMeters);
+            return ParseResult(googleApiData);
+        }
+
+        private async Task<string> GoogleApiPlacesResult(string latitude, string longitude, string radiusInMeters = RadiusInMeters)
         {
             string urlBase = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?";
             string location = "location=" + latitude + "," + longitude;
-            string radius = "&radius=" + RadiusInMeters;
+            string radius = "&radius=" + radiusInMeters;
             string key = "&key=" + ApiKey;
             string url = urlBase + location + radius + key;
 
@@ -29,9 +36,9 @@
             return responseString;
         }
 
-        private static List<Place> ParseResult(string googleApiPlacesJsonString)
+        private static ObservableCollection<Place> ParseResult(string googleApiPlacesJsonString)
         {
-            var places = new List<Place>();
+            var places = new ObservableCollection<Place>();
             var jsonData = JObject.Parse(googleApiPlacesJsonString);
             
             foreach (var result in (JArray)jsonData["results"])

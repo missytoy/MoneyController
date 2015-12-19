@@ -16,12 +16,10 @@ namespace MoneyController
     using Windows.Storage;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
-    using System.Text;
     using Windows.Devices.Geolocation;
     using Helpers;
     using Windows.Media.Capture;
-    using Windows.UI.Xaml.Media.Imaging;
-
+    using Helpers.Models;
     public sealed partial class AddExpensePage : Page
     {
         static Geolocator locator = new Geolocator();
@@ -49,29 +47,6 @@ namespace MoneyController
                 return;
             }
 
-            var accessStatus = await Geolocator.RequestAccessAsync();
-
-            var currentLocation = string.Empty;
-            var latitude = string.Empty;
-            var longitude=string.Empty;
-
-            if (accessStatus != GeolocationAccessStatus.Allowed)
-            {
-                Notification.ShowNotification("Problem with location permissions or access");
-                if (this.Frame.CanGoBack)
-                {
-                    this.Frame.GoBack();
-                }
-            }
-            else
-            {
-                Geoposition geoposition = await locator.GetGeopositionAsync();
-                latitude = geoposition.Coordinate.Latitude.ToString();
-                longitude =geoposition.Coordinate.Longitude.ToString();
-            }
-            
-            currentLocation = latitude + ","+ longitude;
-
             var expenseCategoryText = ComboBoxExpense.SelectedValue == null ? "Other" : ComboBoxExpense.SelectedValue.ToString();
 
             var photo = this.ViewModel.Photo;
@@ -82,7 +57,7 @@ namespace MoneyController
                 Description = this.DescriptionTextBox.Text,
                 DateAndTimeOfExpence = this.dataPicker.Date.DateTime,
                 CategoryExpense = expenseCategoryText,
-                Gelocation = currentLocation, //LocationTextBox.Text, //delete location textbox from page and take the gelocation from phone
+                //Gelocation = currentLocation, //LocationTextBox.Text, //delete location textbox from page and take the gelocation from phone
                 Photo = photo == null ? TakeDefaultPhotoDependingOnTheCategory(expenseCategoryText) : photo //TODO: fix the button add photo and put the photo here
 
             };
@@ -163,6 +138,57 @@ namespace MoneyController
             if (photo != null)
             {
                 this.ViewModel.Photo = photo.Path;
+            }
+        }
+
+        private async void OnComboBoxGPSClick(object sender, RoutedEventArgs e)
+        {
+            if (!this.ComboBoxGPS.IsEnabled)
+            {
+                var accessStatus = await Geolocator.RequestAccessAsync();
+
+                var currentLocation = string.Empty;
+                var latitude = string.Empty;
+                var longitude = string.Empty;
+                var accuracy = string.Empty;
+
+                if (accessStatus != GeolocationAccessStatus.Allowed)
+                {
+                    Notification.ShowNotification("Problem with location permissions or access");
+                    if (this.Frame.CanGoBack)
+                    {
+                        this.Frame.GoBack();
+                    }
+                }
+                else
+                {
+                    this.ComboBoxGPS.PlaceholderText = "Please Wait: Loading places from GPS..";
+                    Geoposition geoposition = await locator.GetGeopositionAsync();
+                    latitude = geoposition.Coordinate.Point.Position.Latitude.ToString();
+                    longitude = geoposition.Coordinate.Point.Position.Longitude.ToString();
+                    accuracy = geoposition.Coordinate.Accuracy.ToString();
+
+
+                    var placesList = await new GoogleApiGPSHelper().GetPlaces(latitude, longitude, accuracy);
+
+                    if (placesList.Count >= 1)
+                    {
+                        this.ComboBoxGPS.PlaceholderText = "Loading done: Choose place!";
+                        this.ComboBoxGPS.Background = PlacesStackPanel.Background;
+                        ViewModel.Places = placesList;
+                        this.ComboBoxGPS.IsEnabled = true;
+                    }
+                }
+            }
+        }
+
+        private void ComboBoxGPS_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var comboBox = (sender as ComboBox);
+            var comboBoxText = (comboBox.SelectedValue as Place).Name;
+            if (!string.IsNullOrEmpty(comboBoxText))
+            {
+                ViewModel.Place = comboBoxText;
             }
         }
     }

@@ -62,38 +62,48 @@
                 <Border Grid.Row="4" DataContext="{StaticResource expenseViewModel}" >
                     <TextBox PlaceholderText="Add Description" 
                          Name="DescriptionTextBox" 
-                         Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
+                         Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}" />
 
                 </Border>
-                <StackPanel Grid.Row="5" Background="#6d8963" HorizontalAlignment="Stretch" DataContext="{StaticResource expenseViewModel}" >
-                        <TextBox PlaceholderText="Place" 
+                <StackPanel Name="PlacesStackPanel" Grid.Row="5" Background="#6d8963" HorizontalAlignment="Stretch" DataContext="{StaticResource expenseViewModel}" >
+                    <TextBox PlaceholderText="Place" 
                          Name="PlaceTextBox" 
                          Text="{Binding Place,
-                                        Mode=TwoWay,
-                                        UpdateSourceTrigger=PropertyChanged}" />
+                                        Mode=TwoWay}" />
 
                     <ComboBox Name="ComboBoxGPS"
-                              PlaceholderText="Loading places from GPS.."
+                              PlaceholderText="DoubleTap here to get places from GPS location."
+                              IsDoubleTapEnabled="True"
                               IsEnabled="False"
                               HorizontalAlignment="Stretch" 
-                              Background="#66914E38" 
-                              ItemsSource="{Binding Places, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                              Background="#66600000" 
+                              ItemsSource="{Binding Path=Places, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                              DoubleTapped="OnComboBoxGPSClick" 
+                              SelectionChanged="ComboBoxGPS_SelectionChanged" >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Name}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
                 </StackPanel>
 
-                <Border  Grid.Row="6"  Height="60" Width="150"> 
+                <Border  Grid.Row="6"  Height="60" Width="150">
                     <Button Content="Add photo"  
                             Name="PhotoButton" 
                             Margin="0" 
-                            Height="60" Width="150"
+                            Height="60" 
+                            Width="150"
                             Click="OnAddPhotoButtonClick">
-                    <Button.Background>
+                        <Button.Background>
                             <ImageBrush Stretch="Fill" ImageSource="{Binding Photo, Mode=TwoWay}" />
-                    </Button.Background>
-                </Button>
+                        </Button.Background>
+                    </Button>
                 </Border>
-                
+
                 <DatePicker  Name="dataPicker" Background="#6d8963" Grid.Row="8" HorizontalAlignment="Stretch"  />
-                
+
                 <Grid Grid.Row="10"  HorizontalAlignment="Stretch" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
