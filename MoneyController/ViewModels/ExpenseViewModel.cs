@@ -1,6 +1,8 @@
 ﻿namespace MoneyController.ViewModels
 {
     using System;
+    using System.Collections.ObjectModel;
+    using Helpers.Models;
 
     public class ExpenseViewModel : ViewModelBase
     {
@@ -18,6 +20,7 @@
 
         public string Place { get; set; }
 
+        public ObservableCollection<Place> Places { get; set; }
         public string Photo
         {
             get

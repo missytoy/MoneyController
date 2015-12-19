@@ -3,10 +3,8 @@
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
-    using GooglePlacesApiSerialisationClasses;
-    using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-    using Windows.Devices.Geolocation;
+    using Models;
 
     public class GoogleApiGPSHelper
     {

@@ -6,12 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:helpers="using:MoneyController.Helpers"
-    xmlns:views ="using:MoneyController.Views"
+    xmlns:viewModels ="using:MoneyController.ViewModels"
     mc:Ignorable="d">
 
     <Page.Resources>
-        <local:EnumTypeToListConverter x:Key="enumConverter"></local:EnumTypeToListConverter>
+        <local:EnumTypeToListConverter x:Key="enumConverter" />
         <local:DateTimeTaker x:Key="dateTimeTaker" />
+        <viewModels:ExpenseViewModel x:Key="expenseViewModel"/>
     </Page.Resources>
 
     <Grid Style="{StaticResource LayoutGridStyle}">
@@ -61,15 +62,23 @@
                 </Border>
 
 
-                <StackPanel Grid.Row="4" Background="#6d8963" HorizontalAlignment="Stretch">
-                    <TextBox PlaceholderText="Add Description" Name="DescriptionTextBox"/>
-                    <TextBox PlaceholderText="Location" Name="LocationTextBox"/>
-                    
-                    <ComboBox Name="ComboBoxGPS"
+                <StackPanel Grid.Row="4" Background="#6d8963" HorizontalAlignment="Stretch" DataContext="{StaticResource expenseViewModel}" />
+                <TextBox PlaceholderText="Add Description" 
+                         Name="DescriptionTextBox" 
+                         Text="{Binding Description, 
+                                Mode=TwoWay,
+                                UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox PlaceholderText="Place" 
+                         Name="PlaceTextBox" 
+                         Text="{Binding Place,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+                <ComboBox Name="ComboBoxGPS"
                               PlaceholderText="Loading places from GPS.."
                               IsEnabled="False"
                               HorizontalAlignment="Stretch" Background="#66914E38" />
-                </StackPanel>
+
 
                 <Border  Grid.Row="5"  Height="60" Width="150"> 
                     <Button Content="Add photo"  

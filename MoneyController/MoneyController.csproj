@@ -97,7 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\GoogleApiGPSHelper.cs" />
-    <Compile Include="Helpers\GooglePlacesApiSerialisationClasses\Place.cs" />
+    <Compile Include="Models\Place.cs" />
     <Compile Include="Helpers\Notification.cs" />
     <Compile Include="Pages\AddExpensePage.xaml.cs">
       <DependentUpon>AddExpensePage.xaml</DependentUpon>
