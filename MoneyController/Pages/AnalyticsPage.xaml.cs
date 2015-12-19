@@ -1,4 +1,5 @@
 ﻿using MoneyController.Models;
+using MoneyController.ViewModels;
 using SQLite.Net;
 using SQLite.Net.Async;
 using SQLite.Net.Platform.WinRT;
@@ -32,6 +33,7 @@ namespace MoneyController
         public AnalyticsPage()
         {
             this.InitializeComponent();
+            this.DataContext = new ExpensesContentViewModel();
         }
 
         private async void OnShowAllExpensesButtonClick(object sender, RoutedEventArgs e)
