@@ -26,6 +26,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Row="0" Margin="0,0,0,0">
@@ -71,7 +72,7 @@
 
                 <Button Grid.Row="5" Content="Add photo" Name="PhotoTextBox"/>
 
-                <Grid Grid.Row="6"  HorizontalAlignment="Stretch" >
+                <Grid Grid.Row="7"  HorizontalAlignment="Stretch" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
@@ -80,10 +81,14 @@
                     <Button Content="Confirm" Grid.Column="1"  Click="OnAddButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
                 </Grid>
 
-                <StackPanel Grid.Row="8" Background="#323f2d"  HorizontalAlignment="Stretch" >
+                <DatePicker  Name="dataPicker" Background="#6d8963" Grid.Row="6" HorizontalAlignment="Stretch"  />
+               
+
+                <!--<StackPanel Grid.Row="8" Background="#323f2d"  HorizontalAlignment="Stretch" >
                     <TextBlock Text="{Binding Source={StaticResource dateTimeTaker}, Path=Now}"
                                Style="{StaticResource LabelTextBlockExpenseStyle}"/>
-                </StackPanel>
+                </StackPanel>-->
+
             </Grid>
         </Grid>
     </Grid>

@@ -54,7 +54,7 @@ namespace MoneyController
             {
                 Price = price,
                 Description = this.DescriptionIncomeTextBox.Text ,
-                DateOfIncome = DateTime.Now,
+                DateOfIncome = this.dataPicker.Date.DateTime,
                 IncomeCategory = incomeCategoryText
             };
 

@@ -66,7 +66,7 @@
                     <TextBox PlaceholderText="Add Description" Name="DescriptionIncomeTextBox" />
                 </Border>
 
-                <Grid Grid.Row="5"  HorizontalAlignment="Stretch" >
+                <Grid Grid.Row="7"  HorizontalAlignment="Stretch" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
@@ -74,11 +74,12 @@
                     <Button Content="Cancel" Grid.Column="0" Click="OnCancelButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
                     <Button Content="Confirm" Grid.Column="1"  Click="OnAddButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
                 </Grid>
+                
+                <DatePicker  Name="dataPicker" Background="#6d8963" Grid.Row="5" HorizontalAlignment="Stretch"  />
 
-                <StackPanel  Grid.Row="8"  Background="#323f2d" Margin="0,0,-20,0" Height="30"   >
+                <!--<StackPanel  Grid.Row="8"  Background="#323f2d" Margin="0,0,-20,0" Height="30"   >
                     <TextBlock Text="{Binding Source={StaticResource dateTimeTaker}, Path=Now}"  Style="{StaticResource LabelTextBlockExpenseStyle}"/>
-                    <!--<TextBlock Text=" location" Style="{StaticResource LabelTextBlockExpenseStyle}"/>-->
-                </StackPanel>
+                </StackPanel>-->
             </Grid>
         </Grid>
     </Grid>

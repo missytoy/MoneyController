@@ -79,7 +79,7 @@ namespace MoneyController
             {
                 Price = price,
                 Description = this.DescriptionTextBox.Text,
-                DateAndTimeOfExpence = DateTime.Now,
+                DateAndTimeOfExpence = this.dataPicker.Date.DateTime,
                 CategoryExpense = expenseCategoryText,
                 Gelocation = currentLocation, //LocationTextBox.Text, //delete location textbox from page and take the gelocation from phone
                 Photo = TakeDefaultPhotoDependingOnTheCategory(expenseCategoryText) //TODO: fix the button add photo and put the photo here
