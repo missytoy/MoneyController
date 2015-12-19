@@ -43,12 +43,32 @@
 
                 <Button Content="Cancel" Grid.Row="3" Click="OnCancelButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
 
-                
-                <ScrollViewer Height="200"  Name="scrollViewer" Grid.Row="2" Visibility="Collapsed" >
+                <!--Visibility="Collapsed"-->
+                <ScrollViewer Height="200"  Name="scrollViewer" Grid.Row="2" >
                     <Border>
-                        <TextBlock  Name="resultTry" Style="{StaticResource LabelTexBlockStyle}" />
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <ItemsControl>
+                                
+                            </ItemsControl>
+                            <TextBlock  
+                            Name="resultTry" 
+                            Style="{StaticResource LabelTexBlockStyle}" />
+                            
+                        </Grid>
                     </Border>
                 </ScrollViewer>
+                
+               
+                
 
             </Grid>
         </Grid>
