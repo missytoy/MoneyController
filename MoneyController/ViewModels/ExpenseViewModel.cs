@@ -5,6 +5,7 @@
     using Helpers.Models;
     using System.Linq.Expressions;
     using Models;
+    using System.Diagnostics;
     public class ExpenseViewModel : ViewModelBase
     {
         private string photo;
@@ -13,9 +14,10 @@
 
         public ExpenseViewModel()
         {
-            this.places = new ObservableCollection<Place>();
-            this.places.Add(new Place() { IconLink = string.Empty, Name = "[Empty]" });
-            this.places.Add(new Place() { IconLink = string.Empty, Name = "[Empty1]" });
+            //var localPlaces = new ObservableCollection<Place>();
+            //localPlaces.Add(new Place() { IconLink = string.Empty, Name = "[Empty]" });
+            //localPlaces.Add(new Place() { IconLink = string.Empty, Name = "[Empty1]" });
+            //this.Places = localPlaces;
         }
 
         public static Expression<Func<ExpenseItem, ExpenseViewModel>> FromModel
@@ -54,7 +56,7 @@
             set
             {
                 this.place = value;
-                this.RaiseProperyChange("Place");
+                this.RaisePropertyChange("Place");
             }
         }
 
@@ -62,12 +64,26 @@
         {
             get
             {
+                if (this.places == null)
+                {
+                    this.places = new ObservableCollection<Place>();
+                }
+
                 return this.places;
             }
             set
             {
-                this.places = value;
-                this.RaiseProperyChange("Places");
+                if (this.places == null)
+                {
+                    this.places = new ObservableCollection<Place>();
+                }
+
+                this.places.Clear();
+                foreach (var place in value)
+                {
+                    this.places.Add(place);
+                }
+                this.RaisePropertyChange("Places");
             }
         }
         public string Photo
@@ -80,7 +96,7 @@
             set
             {
                 this.photo = value;
-                this.RaiseProperyChange("Photo");
+                this.RaisePropertyChange("Photo");
             }
         }
     }

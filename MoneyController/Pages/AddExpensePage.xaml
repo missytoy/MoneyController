@@ -70,7 +70,8 @@
                     <TextBox PlaceholderText="Place" 
                          Name="PlaceTextBox" 
                          Text="{Binding Place,
-                                        Mode=TwoWay}" />
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
                     <Button Name="LoadLocationsButton" Content="Load places from GPS location." Margin="0" Visibility="Visible" Click="LoadLocationsButton_Click"/>
                     <ComboBox Name="ComboBoxGPS"
                               PlaceholderText="DoubleTap here to get places from GPS location."

@@ -6,15 +6,14 @@
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void RaiseProperyChange(string propertyName)
+        protected void RaisePropertyChange(string propertyName)
         {
             if (this.PropertyChanged == null)
             {
                 return;
             }
-
-            var propertyChangeEventsArg = new PropertyChangedEventArgs(propertyName);
-            this.PropertyChanged(this, propertyChangeEventsArg);
+            
+            this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -158,6 +158,7 @@ namespace MoneyController
                 }
                 else
                 {
+                    this.ComboBoxGPS.Visibility = Visibility.Visible;
                     this.ComboBoxGPS.PlaceholderText = "Please Wait: Loading places from GPS..";
                     Geoposition geoposition = await locator.GetGeopositionAsync();
                     latitude = geoposition.Coordinate.Point.Position.Latitude.ToString();
@@ -172,7 +173,6 @@ namespace MoneyController
                         this.ComboBoxGPS.PlaceholderText = "Loading done: Choose place!";
                         this.ComboBoxGPS.Background = PlacesStackPanel.Background;
                         ViewModel.Places = placesList;
-                        this.ComboBoxGPS.Visibility = Visibility.Visible;
                         this.LoadLocationsButton.Visibility = Visibility.Collapsed;
                     }
                 }
@@ -185,7 +185,7 @@ namespace MoneyController
             var comboBoxText = (comboBox.SelectedValue as Place).Name;
             if (!string.IsNullOrEmpty(comboBoxText))
             {
-                ViewModel.Place = comboBoxText;
+                PlaceTextBox.Text = comboBoxText;
             }
         }
     }
