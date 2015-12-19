@@ -21,27 +21,29 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace MoneyController
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class AnalyticsPage : Page
     {
         public AnalyticsPage()
         {
             this.InitializeComponent();
-            this.DataContext = new ExpensesContentViewModel();
+            this.ViewModel = new ExpensesContentViewModel();
         }
+
+        public ExpensesContentViewModel ViewModel
+        {
+            get { return this.DataContext as ExpensesContentViewModel; }
+            set { this.DataContext = value; }
+        }
+
 
         private async void OnShowAllExpensesButtonClick(object sender, RoutedEventArgs e)
         {
             this.InitAsyncExpense();
             var expenseData = await this.GetAllExpensesAsync();
-            (this.DataContext as ExpensesContentViewModel).ExpensesModel = expenseData.AsQueryable()
-                                                                                      .Select(ExpenseViewModel.FromModel);
+            this.ViewModel.ExpensesModel = expenseData.AsQueryable()
+                                            .Select(ExpenseViewModel.FromModel);
 
             this.scrollViewer.Visibility = Visibility.Visible;
 
