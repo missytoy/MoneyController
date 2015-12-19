@@ -13,6 +13,8 @@
         public ExpenseViewModel()
         {
             this.places = new ObservableCollection<Place>();
+            this.places.Add(new Place() { IconLink = string.Empty, Name = "[Empty]" });
+            this.places.Add(new Place() { IconLink = string.Empty, Name = "[Empty1]" });
         }
 
         public decimal Price { get; set; }
