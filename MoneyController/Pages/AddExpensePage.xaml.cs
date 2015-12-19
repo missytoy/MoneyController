@@ -70,6 +70,7 @@ namespace MoneyController
                 longitude =geoposition.Coordinate.Longitude.ToString();
             }
 
+
             currentLocation = latitude + ","+ longitude;
 
             var expenseCategoryText = ComboBoxExpense.SelectedValue == null ? "Other" : ComboBoxExpense.SelectedValue.ToString();
