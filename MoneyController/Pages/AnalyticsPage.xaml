@@ -31,8 +31,14 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Show all incomes" Grid.Column="0" Click="OnShowAllIncomesButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
-                    <Button Content="Show all expences" Grid.Column="1"  Click="OnShowAllExpensesButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Button Content="Show all incomes" Grid.Column="0" Grid.Row="0" Click="OnShowAllIncomesButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
+                    <Button Content="Show all expenses" Grid.Column="1" Grid.Row="0"  Click="OnShowAllExpensesButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
+                    <Button Content="Analytics expenses" Grid.Column="1" Grid.Row="1"  Click="OnAnalyticsExpensesButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
+                    <Button Content="Analytics incomes" Grid.Column="0" Grid.Row="1"  Click="OnAnalyticsIncomesButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
                 </Grid>
 
                 <Button Content="Cancel" Grid.Row="3" Click="OnCancelButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>

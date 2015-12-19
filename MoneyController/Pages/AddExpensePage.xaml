@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:helpers="using:MoneyController.Helpers"
+    xmlns:views ="using:MoneyController.Views"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -72,7 +73,7 @@
 
                 <Button Grid.Row="5" Content="Add photo" Name="PhotoTextBox"/>
 
-                <Grid Grid.Row="7"  HorizontalAlignment="Stretch" >
+                <Grid Grid.Row="6"  HorizontalAlignment="Stretch" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
@@ -81,8 +82,8 @@
                     <Button Content="Confirm" Grid.Column="1"  Click="OnAddButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
                 </Grid>
 
-                <DatePicker  Name="dataPicker" Background="#6d8963" Grid.Row="6" HorizontalAlignment="Stretch"  />
-               
+                <DatePicker  Name="dataPicker" Background="#6d8963" Grid.Row="8" HorizontalAlignment="Stretch"  />
+                <!--<views:DateTimePicker Grid.Row="8"   x:Name="dataPicker" />-->
 
                 <!--<StackPanel Grid.Row="8" Background="#323f2d"  HorizontalAlignment="Stretch" >
                     <TextBlock Text="{Binding Source={StaticResource dateTimeTaker}, Path=Now}"

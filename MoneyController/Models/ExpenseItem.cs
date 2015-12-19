@@ -23,14 +23,7 @@
 
         public override string ToString()
         {
-            if (this.Description == "")
-            {
-                return $"Category: {this.CategoryExpense}, Amount: {this.Price}";
-            }
-            else
-            {
-                return $"{this.Description}, Category: {this.CategoryExpense}, Amount: {this.Price}";
-            }
+            return $"Category: {this.CategoryExpense}, Amount: {this.Price}";           
         }
     }
 }

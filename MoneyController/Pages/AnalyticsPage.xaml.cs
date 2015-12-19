@@ -41,7 +41,22 @@ namespace MoneyController
             var expenseDataAsString = new StringBuilder();
             foreach (var expenseItem in expenseData)
             {
-                expenseDataAsString.AppendLine(expenseItem.ToString());
+                expenseDataAsString.AppendLine($"Category: {expenseItem.CategoryExpense}, Amount: {expenseItem.Price}");
+            }
+
+            this.resultTry.Text = expenseDataAsString.ToString();
+            this.scrollViewer.Visibility = Visibility.Visible;
+
+        }
+
+        private async void OnAnalyticsExpensesButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.InitAsyncExpense();
+            var expenseData = await this.GetAllExpensesAsync();
+            var expenseDataAsString = new StringBuilder();
+            foreach (var expenseItem in expenseData)
+            {
+                expenseDataAsString.AppendLine($"Category: {expenseItem.CategoryExpense}, Amount: {expenseItem.Price}");
             }
 
             this.resultTry.Text = expenseDataAsString.ToString();
@@ -54,10 +69,28 @@ namespace MoneyController
             this.InitAsyncIncome();
             var incomeData = await this.GetAllIncomesAsync();
             var incomeDataAsString = new StringBuilder();
+
             foreach (var incomeItem in incomeData)
             {
-                incomeDataAsString.AppendLine(incomeItem.ToString());
+                incomeDataAsString.AppendLine($"Category: {incomeItem.IncomeCategory}, Amount: {incomeItem.Price}");
             }
+
+
+            this.resultTry.Text = incomeDataAsString.ToString();
+            this.scrollViewer.Visibility = Visibility.Visible;
+        }
+
+        private async void OnAnalyticsIncomesButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.InitAsyncIncome();
+            var incomeData = await this.GetAllIncomesAsync();
+            var incomeDataAsString = new StringBuilder();
+
+            foreach (var incomeItem in incomeData)
+            {
+                incomeDataAsString.AppendLine($"Category: {incomeItem.IncomeCategory}, Amount: {incomeItem.Price}");
+            }
+
 
             this.resultTry.Text = incomeDataAsString.ToString();
             this.scrollViewer.Visibility = Visibility.Visible;
@@ -104,18 +137,35 @@ namespace MoneyController
         private async Task<List<ExpenseItem>> GetAllExpensesAsync()
         {
             var connection = this.GetDbConnectionAsync();
-            var result = await connection.Table<ExpenseItem>()
-                    .OrderByDescending(x => x.DateAndTimeOfExpence)
-                    .ToListAsync();
+            var result = await connection.Table<ExpenseItem>().ToListAsync();
+
+            result = result.GroupBy(ei => ei.CategoryExpense)
+                .Select(item => new ExpenseItem
+                {
+                    Price = item.Sum(i => i.Price),
+                    CategoryExpense = item.First().CategoryExpense
+
+                })
+                .OrderByDescending(ei => ei.Price)
+                .ToList();
+            //.OrderByDescending(x => x.DateAndTimeOfExpence)
+            //.ToListAsync();
             return result;
         }
 
         private async Task<List<IncomeItem>> GetAllIncomesAsync()
         {
             var connection = this.GetDbConnectionAsync();
-            var result = await connection.Table<IncomeItem>()
-                        .OrderByDescending(x => x.DateOfIncome)
-                        .ToListAsync();
+            var result = await connection.Table<IncomeItem>().ToListAsync();
+            result = result.GroupBy(ii => ii.IncomeCategory)
+                 .Select(item => new IncomeItem
+                 {
+                     Price = item.Sum(i => i.Price),
+                     IncomeCategory = item.First().IncomeCategory
+               
+                 })
+                 .OrderByDescending(ei => ei.Price)
+                 .ToList();
             return result;
         }
     }

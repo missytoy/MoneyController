@@ -14,19 +14,13 @@
         public DateTime DateOfIncome { get; set; }
 
         public string Description { get; set; }
-        
+
         public string IncomeCategory { get; set; }
-        
+
         public override string ToString()
         {
-            if (this.Description=="")
-            {
-                return $"Category: {this.IncomeCategory}, Amount: {this.Price}";
-            }
-            else
-            {
-                return $"{this.Description}, Category: {this.IncomeCategory}, Amount: {this.Price}";
-            }
+            return $"Category: {this.IncomeCategory}, Amount: {this.Price}";
+
         }
     }
 }
