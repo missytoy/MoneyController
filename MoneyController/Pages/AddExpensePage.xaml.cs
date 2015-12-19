@@ -45,10 +45,10 @@ namespace MoneyController
             {
                 Notification.ShowNotification("Amount cannot be less than zero or equal to zero");
                 return;
-            }
-
+            } 
             var expenseCategoryText = ComboBoxExpense.SelectedValue == null ? "Other" : ComboBoxExpense.SelectedValue.ToString();
 
+            //TODO:
             var photo = this.ViewModel.Photo;
 
             var item = new ExpenseItem

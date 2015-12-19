@@ -6,7 +6,7 @@
 
     public class ExpensesContentViewModel : ViewModelBase
     {
-        public ObservableCollection<ExpenseViewModel> expensesModel;
+        private ObservableCollection<ExpenseViewModel> expensesModel;
 
         public IEnumerable<ExpenseViewModel> ExpensesModel
         {

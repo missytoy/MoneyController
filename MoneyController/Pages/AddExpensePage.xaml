@@ -65,6 +65,7 @@
                          Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}" />
 
                 </Border>
+                
                 <StackPanel Name="PlacesStackPanel" Grid.Row="5" Background="#6d8963" HorizontalAlignment="Stretch" DataContext="{StaticResource expenseViewModel}" >
                     <TextBox PlaceholderText="Place" 
                          Name="PlaceTextBox" 
@@ -77,11 +78,11 @@
                               Visibility="Collapsed"
                               HorizontalAlignment="Stretch" 
                               Background="#66600000" 
-                              ItemsSource="{Binding Path=Places, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                              ItemsSource="{Binding Places, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                               SelectionChanged="ComboBoxGPS_SelectionChanged" >
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Path=Name}"/>
+                                <TextBlock Text="{Binding Name}"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>

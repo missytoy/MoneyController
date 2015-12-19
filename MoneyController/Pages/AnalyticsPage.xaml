@@ -8,39 +8,7 @@
     mc:Ignorable="d">
 
     <!--TODO: put pie chart instead of this-->
-    <Page.Resources>
-        <DataTemplate x:Key="expensesTemplate">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                <Image Source="{Binding Photo}" 
-                                   Grid.Row="0"
-                                   Grid.Column="0"
-                                   Grid.RowSpan="3"/>
-                <TextBlock Text="{Binding CategoryExpenseString}"
-                                       Grid.Row="0"
-                                       Grid.Column="1"/>
-                <TextBlock Text="{Binding Price}"
-                                       Grid.Row="1"
-                                       Grid.Column="1"/>
-                <TextBlock Text="{Binding Description}"
-                                       Grid.Row="2"
-                                       Grid.Column="1"/>
-                <Button Content="Delete"
-                        Grid.Row="2"
-                        CommandParameter="{Binding}"
-                        Command="{Binding ElementName=pageMain,
-                                          Path=DataContext.ContentViewModel.Delete}"/>
-            </Grid>
-        </DataTemplate>
-    </Page.Resources>
+
     
     <Grid Style="{StaticResource LayoutGridStyle}">
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
@@ -80,21 +48,45 @@
                 <ScrollViewer Height="200"  Name="scrollViewer" Grid.Row="2" >
                     <Border>
                         <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
 
-                            <ItemsControl>
-                                
-                            </ItemsControl>
-                            <TextBlock  
+                            <ListBox ItemsSource="{Binding ExpensesModel}" >
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="150"/>
+                                                <ColumnDefinition Width="1*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Source="{Binding Photo}" 
+                                                      Grid.Row="0"
+                                                      Grid.Column="0"
+                                                      Grid.RowSpan="2"/>
+                                                               <TextBlock Text="{Binding CategoryExpenseString,Mode=TwoWay}"
+                                                          Grid.Row="0"
+                                                          Grid.Column="1"/>
+                                                               <TextBlock Text="{Binding Price,Mode=TwoWay}"
+                                                          Grid.Row="1"
+                                                          Grid.Column="1"/>
+                                                               <TextBlock Text="{Binding Description,Mode=TwoWay}"
+                                                          Grid.Row="2"
+                                                          Grid.Column="1"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            
+                            <!--<ListBox ItemsSource="{Binding ExpensesModel}"
+                 ItemTemplate="{StaticResource expensesTemplate}"   />-->
+
+
+                            <!--<TextBlock  
                             Name="resultTry" 
-                            Style="{StaticResource LabelTexBlockStyle}" />
+                            Style="{StaticResource LabelTexBlockStyle}" />-->
                             
                         </Grid>
                     </Border>

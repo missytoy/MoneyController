@@ -40,20 +40,9 @@ namespace MoneyController
         {
             this.InitAsyncExpense();
             var expenseData = await this.GetAllExpensesAsync();
-            var expenseDataAsString = new StringBuilder();
-            foreach (var expenseItem in expenseData)
-            {
-                if (expenseItem.Description=="")
-                {
-                    expenseDataAsString.AppendLine($"Category: {expenseItem.CategoryExpense}, Amount: {expenseItem.Price}");
-                }
-                else
-                {
-                    expenseDataAsString.AppendLine($"Description: {expenseItem.Description}, Category: {expenseItem.CategoryExpense}, Amount: {expenseItem.Price}");
-                }
-            }
+            (this.DataContext as ExpensesContentViewModel).ExpensesModel = expenseData.AsQueryable()
+                                                                                      .Select(ExpenseViewModel.FromModel);
 
-            this.resultTry.Text = expenseDataAsString.ToString();
             this.scrollViewer.Visibility = Visibility.Visible;
 
         }
@@ -68,7 +57,7 @@ namespace MoneyController
                 expenseDataAsString.AppendLine($"Category: {expenseItem.CategoryExpense}, Amount: {expenseItem.Price}");
             }
 
-            this.resultTry.Text = expenseDataAsString.ToString();
+           // this.resultTry.Text = expenseDataAsString.ToString();
             this.scrollViewer.Visibility = Visibility.Visible;
 
         }
@@ -92,7 +81,7 @@ namespace MoneyController
             }
 
 
-            this.resultTry.Text = incomeDataAsString.ToString();
+            //this.resultTry.Text = incomeDataAsString.ToString();
             this.scrollViewer.Visibility = Visibility.Visible;
         }
 
@@ -106,9 +95,8 @@ namespace MoneyController
             {
                 incomeDataAsString.AppendLine($"Category: {incomeItem.IncomeCategory}, Amount: {incomeItem.Price}");
             }
-
-
-            this.resultTry.Text = incomeDataAsString.ToString();
+            
+           // this.resultTry.Text = incomeDataAsString.ToString();
             this.scrollViewer.Visibility = Visibility.Visible;
         }
 
