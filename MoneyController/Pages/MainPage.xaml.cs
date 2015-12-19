@@ -16,19 +16,13 @@ using Windows.UI.Xaml.Navigation;
 using NotificationsExtensions.Tiles;
 using MoneyController.Helpers;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace MoneyController
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
         public MainPage()
         {
             this.InitializeComponent();
-            Notification.ShowNotification("Wellcome to Money Controller");
         }
 
         private void OnAddIncomeButtonClick(object sender, RoutedEventArgs e)

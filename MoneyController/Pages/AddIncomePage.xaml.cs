@@ -21,13 +21,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace MoneyController
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class AddIncomePage : Page
     {
         public AddIncomePage()
@@ -45,12 +40,11 @@ namespace MoneyController
 
         private async void OnAddButtonClick(object sender, RoutedEventArgs e)
         {
-            var price = 0;
-            int.TryParse(this.AmountIncomeTextBox.Text, out price);
-
-            if (price < 0)
+            decimal price = 0;
+            decimal.TryParse(this.AmountIncomeTextBox.Text, out price);
+            if (price <= 0)
             {
-                Notification.ShowNotification("Amount cannot be less than zero");
+                Notification.ShowNotification("Amount cannot be less than zero or equal to zero");
                 return;
             }
 
@@ -62,7 +56,6 @@ namespace MoneyController
                 Description = this.DescriptionIncomeTextBox.Text ,
                 DateOfIncome = DateTime.Now,
                 IncomeCategory = incomeCategoryText
-
             };
 
             await this.InsertIncomeAsync(item);

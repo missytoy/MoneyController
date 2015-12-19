@@ -65,7 +65,10 @@ namespace MoneyController
 
         private void OnCancelButtonClick(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            if (this.Frame.CanGoBack)
+            {
+                this.Frame.GoBack();
+            }
         }
 
         private SQLiteAsyncConnection GetDbConnectionAsync()

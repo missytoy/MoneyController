@@ -69,10 +69,6 @@
                               HorizontalAlignment="Stretch" Background="#66914E38" />
                 </StackPanel>
 
-                <StackPanel Grid.Row="8" Background="#323f2d"  HorizontalAlignment="Stretch" >
-                    <TextBlock Text="{Binding Source={StaticResource dateTimeTaker}, Path=Now}"  Style="{StaticResource LabelTextBlockExpenseStyle}"/>
-                </StackPanel>
-
                 <Button Grid.Row="5" Content="Add photo" Name="PhotoTextBox"/>
 
                 <Grid Grid.Row="6"  HorizontalAlignment="Stretch" >
@@ -83,6 +79,11 @@
                     <Button Content="Cancel" Grid.Column="0" Click="OnCancelButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
                     <Button Content="Confirm" Grid.Column="1"  Click="OnAddButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
                 </Grid>
+
+                <StackPanel Grid.Row="8" Background="#323f2d"  HorizontalAlignment="Stretch" >
+                    <TextBlock Text="{Binding Source={StaticResource dateTimeTaker}, Path=Now}"
+                               Style="{StaticResource LabelTextBlockExpenseStyle}"/>
+                </StackPanel>
             </Grid>
         </Grid>
     </Grid>

@@ -41,11 +41,11 @@ namespace MoneyController
 
         private async void OnAddButtonClick(object sender, RoutedEventArgs e)
         {
-            var price = 0;
-            int.TryParse(this.AmountTextBox.Text, out price);
-            if (price < 0)
+            decimal price = 0;
+            decimal.TryParse(this.AmountTextBox.Text, out price);
+            if (price <= 0)
             {
-                Notification.ShowNotification("Amount cannot be less than zero");
+                Notification.ShowNotification("Amount cannot be less than zero or equal to zero");
                 return;
             }
 
