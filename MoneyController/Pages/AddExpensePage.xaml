@@ -12,7 +12,6 @@
     <Page.Resources>
         <local:EnumTypeToListConverter x:Key="enumConverter" />
         <local:DateTimeTaker x:Key="dateTimeTaker" />
-        <viewModels:ExpenseViewModel x:Key="expenseViewModel"/>
     </Page.Resources>
 
     <Grid Style="{StaticResource LayoutGridStyle}">
@@ -59,14 +58,13 @@
                 </Border>
 
 
-                <Border Grid.Row="4" DataContext="{StaticResource expenseViewModel}" >
+                <Border Grid.Row="4">
                     <TextBox PlaceholderText="Add Description" 
                          Name="DescriptionTextBox" 
                          Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}" />
-
                 </Border>
-                
-                <StackPanel Name="PlacesStackPanel" Grid.Row="5" Background="#6d8963" HorizontalAlignment="Stretch" DataContext="{StaticResource expenseViewModel}" >
+
+                <StackPanel Name="PlacesStackPanel" Grid.Row="5" Background="#6d8963" HorizontalAlignment="Stretch">
                     <TextBox PlaceholderText="Place" 
                          Name="PlaceTextBox" 
                          Text="{Binding Place,
@@ -76,10 +74,11 @@
                     <ComboBox Name="ComboBoxGPS"
                               PlaceholderText="DoubleTap here to get places from GPS location."
                               IsDoubleTapEnabled="True"
+                              IsEnabled="False"
                               Visibility="Collapsed"
                               HorizontalAlignment="Stretch" 
-                              Background="#66600000" 
-                              ItemsSource="{Binding Places, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                              Background="#66600000"
+                              ItemsSource="{Binding Places, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                               SelectionChanged="ComboBoxGPS_SelectionChanged" >
                         <ComboBox.ItemTemplate>
                             <DataTemplate>

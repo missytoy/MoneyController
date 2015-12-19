@@ -11,13 +11,14 @@
         private string photo;
         private string place;
         private ObservableCollection<Place> places;
+        private Place comboBoxSelectedValue;
 
         public ExpenseViewModel()
         {
-            //var localPlaces = new ObservableCollection<Place>();
-            //localPlaces.Add(new Place() { IconLink = string.Empty, Name = "[Empty]" });
-            //localPlaces.Add(new Place() { IconLink = string.Empty, Name = "[Empty1]" });
-            //this.Places = localPlaces;
+            var localPlaces = new ObservableCollection<Place>();
+            localPlaces.Add(new Place() { IconLink = string.Empty, Name = "[Empty]" });
+            localPlaces.Add(new Place() { IconLink = string.Empty, Name = "[Empty1]" });
+            this.Places = localPlaces;
         }
 
         public static Expression<Func<ExpenseItem, ExpenseViewModel>> FromModel
@@ -26,12 +27,12 @@
             {
                 return model => new ExpenseViewModel
                 {
-                    Description=model.Description,
+                    Description = model.Description,
                     CategoryExpenseString = model.CategoryExpense,
                     DateAndTimeOfExpence = model.DateAndTimeOfExpence,
                     Photo = model.Photo,
-                    Place = model.Gelocation,
-                    Price = model.Price                    
+                    Place = model.Place,
+                    Price = model.Price
                 };
             }
         }
@@ -47,6 +48,7 @@
         public ExpenseType CategoryExpense { get; set; }
 
         public string CategoryExpenseString { get; set; }
+
         public string Place
         {
             get
@@ -79,13 +81,14 @@
                 }
 
                 this.places.Clear();
-                foreach (var place in value)
+                foreach (var placeItem in value)
                 {
-                    this.places.Add(place);
+                    this.places.Add(placeItem);
                 }
                 this.RaisePropertyChange("Places");
             }
         }
+
         public string Photo
         {
             get

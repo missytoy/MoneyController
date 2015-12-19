@@ -17,7 +17,7 @@
         
         public string CategoryExpense { get; set; }
 
-        public string Gelocation { get; set; }
+        public string Place { get; set; }
 
         public string Photo { get; set; }
 

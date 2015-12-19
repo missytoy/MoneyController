@@ -34,7 +34,7 @@ namespace MoneyController
         public ExpenseViewModel ViewModel
         {
             get { return this.DataContext as ExpenseViewModel; }
-            set { this.DataContext = value; }
+            private set { this.DataContext = value; }
         }
 
         private async void OnAddButtonClick(object sender, RoutedEventArgs e)
@@ -45,7 +45,7 @@ namespace MoneyController
             {
                 Notification.ShowNotification("Amount cannot be less than zero or equal to zero");
                 return;
-            } 
+            }
             var expenseCategoryText = ComboBoxExpense.SelectedValue == null ? "Other" : ComboBoxExpense.SelectedValue.ToString();
 
             //TODO:
@@ -158,6 +158,8 @@ namespace MoneyController
                 }
                 else
                 {
+                    this.ComboBoxGPS.IsEnabled = false;
+                    this.LoadLocationsButton.Visibility = Visibility.Collapsed;
                     this.ComboBoxGPS.Visibility = Visibility.Visible;
                     this.ComboBoxGPS.PlaceholderText = "Please Wait: Loading places from GPS..";
                     Geoposition geoposition = await locator.GetGeopositionAsync();
@@ -172,8 +174,8 @@ namespace MoneyController
                     {
                         this.ComboBoxGPS.PlaceholderText = "Loading done: Choose place!";
                         this.ComboBoxGPS.Background = PlacesStackPanel.Background;
-                        ViewModel.Places = placesList;
-                        this.LoadLocationsButton.Visibility = Visibility.Collapsed;
+                        this.ViewModel.Places = placesList;
+                        this.ComboBoxGPS.IsEnabled = true;
                     }
                 }
             }
@@ -185,7 +187,7 @@ namespace MoneyController
             var comboBoxText = (comboBox.SelectedValue as Place).Name;
             if (!string.IsNullOrEmpty(comboBoxText))
             {
-                PlaceTextBox.Text = comboBoxText;
+                this.ViewModel.Place = comboBoxText;
             }
         }
     }
