@@ -20,6 +20,7 @@ namespace MoneyController
     using Helpers;
     using Windows.Media.Capture;
     using Helpers.Models;
+    using Extensions;
     public sealed partial class AddExpensePage : Page
     {
         static Geolocator locator = new Geolocator();
@@ -31,6 +32,14 @@ namespace MoneyController
             this.ViewModel = new ExpenseViewModel();
         }
 
+        public AddExpensePage(MainPage page)
+            :this()
+        {
+            this.MainPageLink = page;
+        }
+
+        public MainPage MainPageLink { get; set; }
+        
         public ExpenseViewModel ViewModel
         {
             get { return this.DataContext as ExpenseViewModel; }
@@ -47,7 +56,7 @@ namespace MoneyController
                 return;
             }
             var expenseCategoryText = ComboBoxExpense.SelectedValue == null ? "Other" : ComboBoxExpense.SelectedValue.ToString();
-            
+
             var photo = this.ViewModel.Photo;
 
             var item = new ExpenseItem
@@ -63,7 +72,7 @@ namespace MoneyController
 
             await this.InsertExpenseAsync(item);
             Notification.ShowNotification("New expense added");
-            this.Frame.Navigate(typeof(MainPage));
+            this.MainPageLink.NavigateToMainPage();
         }
 
         private string TakeDefaultPhotoDependingOnTheCategory(string categoryExpense)
@@ -88,10 +97,7 @@ namespace MoneyController
 
         private void OnCancelButtonClick(object sender, RoutedEventArgs e)
         {
-            if (this.Frame.CanGoBack)
-            {
-                this.Frame.GoBack();
-            }
+            this.MainPageLink.NavigateToMainPage();
         }
 
 

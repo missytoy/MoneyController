@@ -30,6 +30,14 @@ namespace MoneyController
             this.InitializeComponent();
         }
 
+        public AnalyticsPage(MainPage page)
+            :this()
+        {
+            this.MainPageLink = page;
+        }
+
+        public MainPage MainPageLink { get; set; }
+
         private async void OnShowAllExpensesButtonClick(object sender, RoutedEventArgs e)
         {
             this.DataContext = new ExpensesContentViewModel();
@@ -83,10 +91,7 @@ namespace MoneyController
 
         private void OnCancelButtonClick(object sender, RoutedEventArgs e)
         {
-            if (this.Frame.CanGoBack)
-            {
-                this.Frame.GoBack();
-            }
+            this.MainPageLink.NavigateToMainPage();
         }
 
         private SQLiteAsyncConnection GetDbConnectionAsync()
