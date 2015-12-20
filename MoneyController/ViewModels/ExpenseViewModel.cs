@@ -14,10 +14,10 @@
 
         public ExpenseViewModel()
         {
-            var localPlaces = new ObservableCollection<Place>();
-            localPlaces.Add(new Place() { IconLink = string.Empty, Name = "[Empty]" });
-            localPlaces.Add(new Place() { IconLink = string.Empty, Name = "[Empty1]" });
-            this.Places = localPlaces;
+            //var localPlaces = new ObservableCollection<Place>();
+            //localPlaces.Add(new Place() { IconLink = string.Empty, Name = "[Empty]" });
+            //localPlaces.Add(new Place() { IconLink = string.Empty, Name = "[Empty1]" });
+            //this.Places = localPlaces;
         }
 
         public static Expression<Func<ExpenseItem, ExpenseViewModel>> FromModel
