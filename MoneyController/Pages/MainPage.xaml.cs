@@ -44,5 +44,27 @@ namespace MoneyController
         {
             //TODO: this.Frame.Navigate(typeof(Options)); //stop notifications
         }
+        
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
+        private void AddExpense_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(AddExpensePage));
+        }
+
+        private void AddIncome_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(AddIncomePage));
+        }
+
+        private void Analytics_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(AnalyticsPage));
+        }
+
+        
     }
 }
