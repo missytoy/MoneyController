@@ -171,11 +171,18 @@ namespace MoneyController
                     this.ComboBoxGPS.PlaceholderText = "Please Wait: Loading places from GPS..";
                     Geoposition geoposition = await locator.GetGeopositionAsync();
 
-                    
-                    latitude = geoposition.Coordinate.Point.Position.Latitude.ToString();
-                    longitude = geoposition.Coordinate.Point.Position.Longitude.ToString();
-                    accuracy = geoposition.Coordinate.Accuracy.ToString();
-
+                    if (MainPageLink.OptionsViewModelModel.ForeceLocation)
+                    {
+                        latitude = MainPageLink.OptionsViewModelModel.ForcedLatitude;
+                        longitude = MainPageLink.OptionsViewModelModel.ForcedLongitude;
+                        accuracy = MainPageLink.OptionsViewModelModel.ForcedAccuracyInMeters;
+                    }
+                    else
+                    {
+                        latitude = geoposition.Coordinate.Point.Position.Latitude.ToString();
+                        longitude = geoposition.Coordinate.Point.Position.Longitude.ToString();
+                        accuracy = geoposition.Coordinate.Accuracy.ToString();
+                    }
 
                     var placesList = await new GoogleApiGPSHelper().GetPlaces(latitude, longitude, accuracy);
 

@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using NotificationsExtensions.Tiles;
 using MoneyController.Helpers;
+using MoneyController.ViewModels;
 
 namespace MoneyController
 {
@@ -37,8 +38,10 @@ namespace MoneyController
             this.AddIncomePagePage = new AddIncomePage(this);
             this.AnalyticsPagePage = new AnalyticsPage(this);
             this.OptionsPagePage = new OptionsPage(this);
-
+            OptionsViewModelModel = this.OptionsPagePage.ViewModel;
         }
+
+        public OptionsViewModel OptionsViewModelModel { get; private set; }
 
         private void MainPage_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
