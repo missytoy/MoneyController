@@ -33,5 +33,26 @@
             </Grid>
         </Grid>
     </Grid>
-
+    <Page.TopAppBar>
+        <AppBar>
+            <StackPanel Orientation="Horizontal">
+                <AppBarButton Name="Home"
+                              Content="Home"
+                              Icon="Home" 
+                              Click="Home_Click"/>
+                <AppBarSeparator BorderThickness="2"/>
+                <AppBarButton Name="Add"
+                              Content="Add"
+                              Icon="Add" 
+                              Click="Add_Click"/>
+                <AppBarButton Name="Analytics"
+                              Content="Analytics"
+                              Icon="OpenFile" 
+                              Click="Analytics_Click"/>
+                <AppBarButton Name="Options"
+                              Content="Options"
+                              Icon="Setting" />
+            </StackPanel>
+        </AppBar>
+    </Page.TopAppBar>
 </Page>
