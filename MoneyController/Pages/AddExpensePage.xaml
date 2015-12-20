@@ -81,7 +81,7 @@
                               PlaceholderText="No loaded places."
                               IsDoubleTapEnabled="True"
                               IsEnabled="False"
-                              Visibility="Collapsed"
+                              Visibility="Visible"
                               HorizontalAlignment="Stretch" 
                               Background="#66600000"
                               ItemsSource="{Binding Places, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

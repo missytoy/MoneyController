@@ -9,7 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
-            <CheckBox Content="Force Location" IsChecked="{Binding ForeceLocation}"/>
+            <CheckBox Content="Force Location" IsChecked="{Binding ForeceLocation, Mode=TwoWay}"/>
             <TextBlock Text="Forced Latitude"/>
             <TextBox Text="{Binding ForcedLatitude, Mode=TwoWay}"/>
             <TextBlock Text="Forced Longitude"/>

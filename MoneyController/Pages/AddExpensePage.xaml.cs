@@ -33,13 +33,13 @@ namespace MoneyController
         }
 
         public AddExpensePage(MainPage page)
-            :this()
+            : this()
         {
             this.MainPageLink = page;
         }
 
         public MainPage MainPageLink { get; set; }
-        
+
         public ExpenseViewModel ViewModel
         {
             get { return this.DataContext as ExpenseViewModel; }
@@ -55,7 +55,7 @@ namespace MoneyController
                 Notification.ShowNotification("Amount cannot be less than zero or equal to zero");
                 return;
             }
-            
+
             var expenseCategoryText = ComboBoxExpense.SelectedValue == null ? "Other" : ComboBoxExpense.SelectedValue.ToString();
 
             var photo = this.ViewModel.Photo;
@@ -63,7 +63,7 @@ namespace MoneyController
             var item = new ExpenseItem
             {
                 Price = price,
-                Description = this.DescriptionTextBox.Text ,
+                Description = this.DescriptionTextBox.Text,
                 DateAndTimeOfExpence = this.dataPicker.Date.DateTime,
                 CategoryExpense = expenseCategoryText,
                 Place = this.PlaceTextBox.Text, //LocationTextBox.Text, //delete location textbox from page and take the gelocation from phone
@@ -92,7 +92,7 @@ namespace MoneyController
                 case 'C': return "/Assets/CategoryLetters/cLetter.jpg";
                 case 'I': return "/Assets/CategoryLetters/iLetter.jpg";
                 case 'G': return "/Assets/CategoryLetters/gLetter.jpg";
-                case 'O': return "/Assets/CategoryLetters/oLetter.jpg"; 
+                case 'O': return "/Assets/CategoryLetters/oLetter.jpg";
                 default: return "/Assets/CategoryLetters/oLetter.jpg";
             }
         }
@@ -150,60 +150,61 @@ namespace MoneyController
 
         private async void LoadLocationsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!this.ComboBoxGPS.IsEnabled)
+            //if (!this.ComboBoxGPS.IsEnabled)
+            //{
+            this.ComboBoxGPS.IsEnabled = false;
+            var accessStatus = await Geolocator.RequestAccessAsync();
+
+            var currentLocation = string.Empty;
+            var latitude = string.Empty;
+            var longitude = string.Empty;
+            var accuracy = string.Empty;
+
+            if (accessStatus != GeolocationAccessStatus.Allowed)
             {
-                var accessStatus = await Geolocator.RequestAccessAsync();
+                Notification.ShowNotification("Problem with location permissions or access");
+            }
+            else
+            {
+                this.ComboBoxGPS.PlaceholderText = "Please Wait: Loading places from GPS..";
+                Geoposition geoposition = await locator.GetGeopositionAsync();
 
-                var currentLocation = string.Empty;
-                var latitude = string.Empty;
-                var longitude = string.Empty;
-                var accuracy = string.Empty;
-
-                if (accessStatus != GeolocationAccessStatus.Allowed)
+                if (MainPageLink.OptionsViewModelModel.ForeceLocation)
                 {
-                    Notification.ShowNotification("Problem with location permissions or access");
+                    latitude = MainPageLink.OptionsViewModelModel.ForcedLatitude;
+                    longitude = MainPageLink.OptionsViewModelModel.ForcedLongitude;
+                    accuracy = MainPageLink.OptionsViewModelModel.ForcedAccuracyInMeters;
                 }
                 else
                 {
-                    this.ComboBoxGPS.IsEnabled = false;
-                    this.LoadLocationsButton.Visibility = Visibility.Collapsed;
-                    this.ComboBoxGPS.Visibility = Visibility.Visible;
-                    this.ComboBoxGPS.PlaceholderText = "Please Wait: Loading places from GPS..";
-                    Geoposition geoposition = await locator.GetGeopositionAsync();
+                    latitude = geoposition.Coordinate.Point.Position.Latitude.ToString();
+                    longitude = geoposition.Coordinate.Point.Position.Longitude.ToString();
+                    accuracy = geoposition.Coordinate.Accuracy.ToString();
+                }
 
-                    if (MainPageLink.OptionsViewModelModel.ForeceLocation)
-                    {
-                        latitude = MainPageLink.OptionsViewModelModel.ForcedLatitude;
-                        longitude = MainPageLink.OptionsViewModelModel.ForcedLongitude;
-                        accuracy = MainPageLink.OptionsViewModelModel.ForcedAccuracyInMeters;
-                    }
-                    else
-                    {
-                        latitude = geoposition.Coordinate.Point.Position.Latitude.ToString();
-                        longitude = geoposition.Coordinate.Point.Position.Longitude.ToString();
-                        accuracy = geoposition.Coordinate.Accuracy.ToString();
-                    }
+                var placesList = await new GoogleApiGPSHelper().GetPlaces(latitude, longitude, accuracy);
 
-                    var placesList = await new GoogleApiGPSHelper().GetPlaces(latitude, longitude, accuracy);
-
-                    if (placesList.Count >= 1)
-                    {
-                        this.ComboBoxGPS.PlaceholderText = "Loading done: Choose place!";
-                        this.ComboBoxGPS.Background = PlacesStackPanel.Background;
-                        this.ViewModel.Places = placesList;
-                        this.ComboBoxGPS.IsEnabled = true;
-                    }
+                if (placesList.Count >= 1)
+                {
+                    this.ComboBoxGPS.PlaceholderText = "Loading done: Choose place!";
+                    this.ComboBoxGPS.Background = PlacesStackPanel.Background;
+                    this.ViewModel.Places = placesList;
+                    this.ComboBoxGPS.IsEnabled = true;
                 }
             }
+            //}
         }
 
         private void ComboBoxGPS_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var comboBox = (sender as ComboBox);
-            var comboBoxText = (comboBox.SelectedValue as Place).Name;
-            if (!string.IsNullOrEmpty(comboBoxText))
+            if (comboBox.SelectedValue != null)
             {
-                this.ViewModel.Place = comboBoxText;
+                var comboBoxText = (comboBox.SelectedValue as Place).Name;
+                if (!string.IsNullOrEmpty(comboBoxText))
+                {
+                    this.ViewModel.Place = comboBoxText;
+                }
             }
         }
     }
