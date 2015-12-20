@@ -28,7 +28,6 @@ namespace MoneyController
         public AnalyticsPage()
         {
             this.InitializeComponent();
-            
         }
 
         private async void OnShowAllExpensesButtonClick(object sender, RoutedEventArgs e)
@@ -48,7 +47,7 @@ namespace MoneyController
             this.DataContext = new ExpensesContentViewModel();
             this.InitAsyncExpense();
             var expenseData = await this.AnalyticsExpensesAsync();
-
+            
             (this.DataContext as ExpensesContentViewModel).ExpensesModel = expenseData.AsQueryable()
                                 .Select(ExpenseViewModel.FromModel);
 
@@ -61,7 +60,6 @@ namespace MoneyController
             this.DataContext = new IncomeContentViewModel();
             this.InitAsyncIncome();
             var incomeData = await this.GetAllIncomesAsync();
-            var incomeDataAsString = new StringBuilder();
 
             (this.DataContext as IncomeContentViewModel).IncomeModels = incomeData.AsQueryable()
                                                                                      .Select(IncomeViewModel.FromModel);
@@ -72,10 +70,11 @@ namespace MoneyController
 
         private async void OnAnalyticsIncomesButtonClick(object sender, RoutedEventArgs e)
         {
+            this.DataContext = new IncomeContentViewModel();
             this.InitAsyncIncome();
             var incomeData = await this.AnalyticsIncomesAsync();
-
-           (this.DataContext as IncomeContentViewModel).IncomeModels = incomeData.AsQueryable()
+            
+            (this.DataContext as IncomeContentViewModel).IncomeModels = incomeData.AsQueryable()
                              .Select(IncomeViewModel.FromModel);
 
             this.scrollViewer.Visibility = Visibility.Collapsed;
