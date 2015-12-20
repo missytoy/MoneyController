@@ -44,19 +44,19 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                
-                <ScrollViewer Grid.Row="0" Grid.Column="0" Height="30">
-                    <TextBlock Text="{Binding Description,Mode=TwoWay}" TextWrapping="WrapWholeWords"/>
-                </ScrollViewer>
-
                 <TextBlock Text="{Binding Price,Mode=TwoWay}"
                         Style="{StaticResource TextBlockIncomeStyle}"
                         Grid.Row="0"
-                        Grid.Column="1"/>
+                        Grid.Column="0"/>
                 <TextBlock Text="{Binding CategoryIncomeString,Mode=TwoWay}"
                         Style="{StaticResource TextBlockIncomeStyle}"
                         Grid.Row="0"
-                        Grid.Column="2"/>
+                        Grid.Column="1"/>
+
+                <ScrollViewer Grid.Row="0" Grid.Column="2" Height="30">
+                    <TextBlock Text="{Binding Description,Mode=TwoWay}" TextWrapping="WrapWholeWords"/>
+                </ScrollViewer>
+
             </Grid>
         </DataTemplate>
     </Page.Resources>
@@ -115,12 +115,15 @@
                 <ScrollViewer  Style="{StaticResource ScrollViewerStyle}" Name="scrollViewerIncomes" Grid.Row="2">
                     <Border>
                         <Grid>
-                            <ListBox ItemsSource="{Binding IncomeModels}"
+                            <ListBox  DoubleTapped="ListBox_DoubleTapped_1"
+                                     ItemsSource="{Binding IncomeModels}"
                                      ItemTemplate="{StaticResource incomesTemplate}"   />
                         </Grid>
                     </Border>
                 </ScrollViewer>
 
+                <TextBlock Name="nqkakwonesto"> </TextBlock>
+                
             </Grid>
         </Grid>
     </Grid>

@@ -168,5 +168,19 @@ namespace MoneyController
             return result;
         }
 
+       private void ListBox_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+       {
+           var position = e.GetPosition(this.nqkakwonesto);
+        //this.nqkakwonesto.Visibility = Visibility.Visible;
+        //this.nqkakwonesto.Height = 100;
+        //this.nqkakwonesto.Width = 100;
+        //var gg = sender;
+        //var g = ((e.OriginalSource as ListBoxItem).DataContext) as ExpensesContentViewModel;
+       }
+
+        private void ListBox_DoubleTapped_1(object sender, DoubleTappedRoutedEventArgs e)
+        {
+          //  ((sender.OriginalSource as ListBoxItem).DataContext) as ExpensesContentViewModel;
+        }
     }
 }
