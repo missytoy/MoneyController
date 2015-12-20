@@ -6,41 +6,43 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    
+    <Grid ManipulationStarted="MainPage_ManipulationStarted" ManipulationDelta="MainPage_ManipulationDelta" ManipulationMode="All">
+        <Frame Name="MainPageFrame">
+            <Grid Style="{StaticResource LayoutGridStyle}">
+                <Grid.ChildrenTransitions>
+                    <TransitionCollection>
+                        <EntranceThemeTransition />
+                    </TransitionCollection>
+                </Grid.ChildrenTransitions>
 
-    <Frame Name="MainPageFrame">
-        <Grid Style="{StaticResource LayoutGridStyle}">
-            <Grid.ChildrenTransitions>
-                <TransitionCollection>
-                    <EntranceThemeTransition />
-                </TransitionCollection>
-            </Grid.ChildrenTransitions>
+                <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
 
-            <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
 
-                    </Grid.RowDefinitions>
-
-                    <StackPanel Grid.Row="0" Margin="29,0,0,0">
-                        <TextBlock Text="{StaticResource AppName}" 
+                        <StackPanel Grid.Row="0" Margin="29,0,0,0">
+                            <TextBlock Text="{StaticResource AppName}" 
                                Style="{StaticResource TitleStyle}" />
 
-                    </StackPanel>
+                        </StackPanel>
 
-                    <Button Content="Add Income" Grid.Row="1" Click="OnAddIncomeButtonClick" />
-                    <Button Content="Add Expense" Grid.Row="2" Click="OnAddExpenseButtonClick"/>
-                    <Button Content="Analytics" Grid.Row="3" Click="OnAnalyticsButtonClick" />
-                    <Button Content="Options" Grid.Row="4" Click="OnOptionsButtonClick" />
+                        <Button Content="Add Income" Grid.Row="1" Click="OnAddIncomeButtonClick" />
+                        <Button Content="Add Expense" Grid.Row="2" Click="OnAddExpenseButtonClick"/>
+                        <Button Content="Analytics" Grid.Row="3" Click="OnAnalyticsButtonClick" />
+                        <Button Content="Options" Grid.Row="4" Click="OnOptionsButtonClick" />
+                    </Grid>
                 </Grid>
             </Grid>
-        </Grid>
-    </Frame>
+        </Frame>
+    </Grid>
     <Page.TopAppBar>
         <AppBar>
             <StackPanel Orientation="Horizontal">
