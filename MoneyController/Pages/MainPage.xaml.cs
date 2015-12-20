@@ -24,6 +24,7 @@ namespace MoneyController
         private AddExpensePage AddExpensePagePage;
         private AddIncomePage AddIncomePagePage;
         private AnalyticsPage AnalyticsPagePage;
+        private OptionsPage OptionsPagePage;
         private Point initialpoint;
         string currentPage;
 
@@ -35,7 +36,7 @@ namespace MoneyController
             this.AddExpensePagePage = new AddExpensePage(this);
             this.AddIncomePagePage = new AddIncomePage(this);
             this.AnalyticsPagePage = new AnalyticsPage(this);
-            //this.OptionsPagePage = new OptionsPage(this);
+            this.OptionsPagePage = new OptionsPage(this);
 
         }
 
@@ -116,8 +117,7 @@ namespace MoneyController
         private void OnOptionsButtonClick(object sender, RoutedEventArgs e)
         {
             this.currentPage = "OptionsPage";
-            //TODO: MainPageFrame.Content = this.OptionsPagePage; //stop notifications
-            this.TopAppBar.IsOpen = !this.TopAppBar.IsOpen;
+            MainPageFrame.Content = this.OptionsPagePage; //stop notifications
         }
 
         private void Home_Click(object sender, RoutedEventArgs e)
@@ -141,6 +141,12 @@ namespace MoneyController
         private void Analytics_Click(object sender, RoutedEventArgs e)
         {
             OnAnalyticsButtonClick(null, null);
+            this.TopAppBar.IsOpen = !this.TopAppBar.IsOpen;
+        }
+
+        private void Options_Click(object sender, RoutedEventArgs e)
+        {
+            OnOptionsButtonClick(null, null);
             this.TopAppBar.IsOpen = !this.TopAppBar.IsOpen;
         }
     }

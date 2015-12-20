@@ -150,7 +150,7 @@ namespace MoneyController
 
         private async void LoadLocationsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.ComboBoxGPS.Visibility == Visibility.Collapsed)
+            if (!this.ComboBoxGPS.IsEnabled)
             {
                 var accessStatus = await Geolocator.RequestAccessAsync();
 
@@ -170,6 +170,8 @@ namespace MoneyController
                     this.ComboBoxGPS.Visibility = Visibility.Visible;
                     this.ComboBoxGPS.PlaceholderText = "Please Wait: Loading places from GPS..";
                     Geoposition geoposition = await locator.GetGeopositionAsync();
+
+                    
                     latitude = geoposition.Coordinate.Point.Position.Latitude.ToString();
                     longitude = geoposition.Coordinate.Point.Position.Longitude.ToString();
                     accuracy = geoposition.Coordinate.Accuracy.ToString();
