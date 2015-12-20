@@ -7,8 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <!--TODO: put pie chart instead of this-->
-
     <Page.Resources>
         <DataTemplate x:Key="expensesTemplate">
             <Grid >
@@ -246,6 +244,7 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -255,7 +254,7 @@
                         <Image Name="imageSourceExpenseDetailInforamtion" 
                            Grid.Row="0"
                            Grid.Column="0"
-                           Grid.RowSpan="4"/>
+                           Grid.RowSpan="5"/>
                         <TextBlock Name="categoryExpenseDetailInforamtion" 
                            Style="{StaticResource TextBlockIncomeStyle}"
                            Grid.Row="0"
@@ -270,7 +269,11 @@
                            Style="{StaticResource TextBlockIncomeStyle}"/>
                         <TextBlock  Name="descriptionExpenseDetailInforamtion" 
                            Grid.Row="3"
-                           Grid.Column="3"
+                           Grid.Column="2"
+                           Style="{StaticResource TextBlockIncomeStyle}"/>
+                        <TextBlock  Name="placeExpenseDetailInforamtion" 
+                           Grid.Row="4"
+                           Grid.Column="2"
                            Style="{StaticResource TextBlockIncomeStyle}"/>
                     </Grid>
                 </Border>

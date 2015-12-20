@@ -209,6 +209,7 @@
             this.dateTimeExpenseDetailInforamtion.Text = $"Date: {  item.DateAndTimeOfExpence} ";
             this.descriptionExpenseDetailInforamtion.Text = item.Description.ToString();
             this.categoryExpenseDetailInforamtion.Text = $"Category: { item.CategoryExpenseString}";
+            this.placeExpenseDetailInforamtion.Text = $"Place: { item.Place}";
 
             if (item.Photo.StartsWith("/Assets"))
             {

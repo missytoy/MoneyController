@@ -66,8 +66,8 @@ namespace MoneyController
                 Description = this.DescriptionTextBox.Text,
                 DateAndTimeOfExpence = this.dataPicker.Date.DateTime,
                 CategoryExpense = expenseCategoryText,
-                Place = this.PlaceTextBox.Text, //LocationTextBox.Text, //delete location textbox from page and take the gelocation from phone
-                Photo = photo == null ? TakeDefaultPhotoDependingOnTheCategory(expenseCategoryText) : photo //TODO: fix the button add photo and put the photo here
+                Place = this.PlaceTextBox.Text, 
+                Photo = photo == null ? TakeDefaultPhotoDependingOnTheCategory(expenseCategoryText) : photo 
 
             };
 
