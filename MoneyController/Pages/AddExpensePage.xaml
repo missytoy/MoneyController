@@ -15,6 +15,13 @@
     </Page.Resources>
 
     <Grid Style="{StaticResource LayoutGridStyle}">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition />
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
         <Grid x:Name="ContentRoot" Margin="19,9.5,19,0">
             <Grid>
                 <Grid.RowDefinitions>
@@ -117,7 +124,6 @@
                     <Button Content="Cancel" Grid.Column="0" Click="OnCancelButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
                     <Button Content="Confirm" Grid.Column="1"  Click="OnAddButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
                 </Grid>
-
 
             </Grid>
         </Grid>

@@ -86,7 +86,13 @@
             <Setter Property="Margin" Value="10"/>
             <Setter Property="Height" Value="30"/>
         </Style>
-        
-    </Application.Resources>
 
+        <Style TargetType="EntranceThemeTransition" >
+            <Setter Property="FromVerticalOffset" Value="-500"/>
+            <Setter Property="IsStaggeringEnabled" Value="True"/>
+        </Style>
+        
+
+    </Application.Resources>
+    
 </Application>

@@ -15,6 +15,13 @@
     </Page.Resources>
 
     <Grid Style="{StaticResource LayoutGridStyle}" >
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition />
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        
         <Grid x:Name="ContentRoot" Margin="19,9.5,19,0">
             <Grid Height="631" VerticalAlignment="Top">
 
