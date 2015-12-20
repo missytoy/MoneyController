@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 namespace MoneyController
@@ -49,6 +50,8 @@ namespace MoneyController
             this.scrollViewer.Visibility = Visibility.Visible;
             this.scrollViewerIncomes.Visibility = Visibility.Collapsed;
             this.incomeDetailsInformation.Visibility = Visibility.Collapsed;
+            this.expenseDetailsInformation.Visibility = Visibility.Collapsed;
+
         }
 
         private async void OnAnalyticsExpensesButtonClick(object sender, RoutedEventArgs e)
@@ -60,9 +63,11 @@ namespace MoneyController
             (this.DataContext as ExpensesContentViewModel).ExpensesModel = expenseData.AsQueryable()
                                 .Select(ExpenseViewModel.FromModel);
 
-            this.scrollViewer.Visibility = Visibility.Visible;
+            this.scrollViewerrDetails.Visibility = Visibility.Visible;
             this.scrollViewerIncomes.Visibility = Visibility.Collapsed;
             this.incomeDetailsInformation.Visibility = Visibility.Collapsed;
+            this.expenseDetailsInformation.Visibility = Visibility.Collapsed;
+
         }
 
         private async void OnShowAllIncomesButtonClick(object sender, RoutedEventArgs e)
@@ -77,6 +82,8 @@ namespace MoneyController
             this.scrollViewer.Visibility = Visibility.Collapsed;
             this.scrollViewerIncomes.Visibility = Visibility.Visible;
             this.incomeDetailsInformation.Visibility = Visibility.Collapsed;
+            this.expenseDetailsInformation.Visibility = Visibility.Collapsed;
+
         }
 
         private async void OnAnalyticsIncomesButtonClick(object sender, RoutedEventArgs e)
@@ -91,6 +98,7 @@ namespace MoneyController
             this.scrollViewer.Visibility = Visibility.Collapsed;
             this.scrollViewerIncomes.Visibility = Visibility.Visible;
             this.incomeDetailsInformation.Visibility = Visibility.Collapsed;
+            this.expenseDetailsInformation.Visibility = Visibility.Collapsed;
         }
 
         private void OnCancelButtonClick(object sender, RoutedEventArgs e)
@@ -179,7 +187,6 @@ namespace MoneyController
         
         private void DoubleTappedOnListBox(object sender, DoubleTappedRoutedEventArgs e)
         {
-           // var position = e.GetPosition(this.nqkakwonesto);
             var item = (sender as ListBox).SelectedItem as IncomeViewModel;
             this.priceDetailIncome.Text = $"Price: { item.Price}"; 
             this.dateDetailIncome.Text = $"Date: {  item.DateOfIncome} ";
@@ -187,6 +194,31 @@ namespace MoneyController
             this.categoryDetailIncome.Text = $"Category: { item.CategoryIncomeString}";
 
             this.incomeDetailsInformation.Visibility = Visibility.Visible;
+            this.expenseDetailsInformation.Visibility = Visibility.Collapsed;
+            this.scrollViewer.Visibility = Visibility.Collapsed;
+            this.scrollViewerIncomes.Visibility = Visibility.Collapsed;
+        }
+
+        private void DoubleTappedOnListBoxExpense(object sender, DoubleTappedRoutedEventArgs e)
+        {
+
+            var item = (sender as ListBox).SelectedItem as ExpenseViewModel;
+            this.priceExpenseDetailInforamtion.Text = $"Price: { item.Price}";
+            this.dateTimeExpenseDetailInforamtion.Text = $"Date: {  item.DateAndTimeOfExpence} ";
+            this.descriptionExpenseDetailInforamtion.Text = item.Description.ToString();
+            this.categoryExpenseDetailInforamtion.Text = $"Category: { item.CategoryExpenseString}";
+
+            if (item.Photo.StartsWith("/Assets"))
+            {
+                this.imageSourceExpenseDetailInforamtion.Source = new BitmapImage(new Uri("ms-appx://" + item.Photo,UriKind.Absolute));
+            }
+            else
+            {
+                this.imageSourceExpenseDetailInforamtion.Source = new BitmapImage(new Uri(item.Photo));
+            }
+
+            this.expenseDetailsInformation.Visibility = Visibility.Visible;
+            this.incomeDetailsInformation.Visibility = Visibility.Collapsed;
             this.scrollViewer.Visibility = Visibility.Collapsed;
             this.scrollViewerIncomes.Visibility = Visibility.Collapsed;
         }
