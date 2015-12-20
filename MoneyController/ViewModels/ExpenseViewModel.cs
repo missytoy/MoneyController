@@ -11,7 +11,6 @@
         private string photo;
         private string place;
         private ObservableCollection<Place> places;
-        private Place comboBoxSelectedValue;
 
         public ExpenseViewModel()
         {
