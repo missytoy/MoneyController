@@ -22,33 +22,43 @@ namespace MoneyController
     /// </summary>
     public sealed partial class StartPage : Page
     {
+        private Page MainPage;
+        private Page AddExpensePage;
+        private Page AddIncomePage;
+        private Page AnalyticsPage;
+        //private Page OptionsPage;
+
+
         public StartPage()
         {
             this.InitializeComponent();
+            this.MainPage = new MainPage();
+            StartPageMainFrame.Content = this.MainPage;
+            this.AddExpensePage = new AddExpensePage();
+            this.AddIncomePage = new AddIncomePage();
+            this.AnalyticsPage = new AnalyticsPage();
+
         }
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {
-            var page = new MainPage();
-            StartPageMainFrame.Content = page;
+            
+            StartPageMainFrame.Content = this.MainPage;
         }
 
         private void AddExpense_Click(object sender, RoutedEventArgs e)
         {
-            var page = new AddExpensePage();
-            StartPageMainFrame.Content = page;
+            StartPageMainFrame.Content = this.AddExpensePage;
         }
 
         private void AddIncome_Click(object sender, RoutedEventArgs e)
         {
-            var page = new AddIncomePage();
-            StartPageMainFrame.Content = page;
+            StartPageMainFrame.Content = this.AddIncomePage;
         }
 
         private void Analytics_Click(object sender, RoutedEventArgs e)
         {
-            var page = new AnalyticsPage();
-            StartPageMainFrame.Content = page;
+            StartPageMainFrame.Content = this.AnalyticsPage;
         }
     }
 }
