@@ -48,6 +48,7 @@ namespace MoneyController
 
             this.scrollViewer.Visibility = Visibility.Visible;
             this.scrollViewerIncomes.Visibility = Visibility.Collapsed;
+            this.incomeDetailsInformation.Visibility = Visibility.Collapsed;
         }
 
         private async void OnAnalyticsExpensesButtonClick(object sender, RoutedEventArgs e)
@@ -61,6 +62,7 @@ namespace MoneyController
 
             this.scrollViewer.Visibility = Visibility.Visible;
             this.scrollViewerIncomes.Visibility = Visibility.Collapsed;
+            this.incomeDetailsInformation.Visibility = Visibility.Collapsed;
         }
 
         private async void OnShowAllIncomesButtonClick(object sender, RoutedEventArgs e)
@@ -74,6 +76,7 @@ namespace MoneyController
             
             this.scrollViewer.Visibility = Visibility.Collapsed;
             this.scrollViewerIncomes.Visibility = Visibility.Visible;
+            this.incomeDetailsInformation.Visibility = Visibility.Collapsed;
         }
 
         private async void OnAnalyticsIncomesButtonClick(object sender, RoutedEventArgs e)
@@ -87,6 +90,7 @@ namespace MoneyController
 
             this.scrollViewer.Visibility = Visibility.Collapsed;
             this.scrollViewerIncomes.Visibility = Visibility.Visible;
+            this.incomeDetailsInformation.Visibility = Visibility.Collapsed;
         }
 
         private void OnCancelButtonClick(object sender, RoutedEventArgs e)
@@ -172,20 +176,19 @@ namespace MoneyController
                   .ToListAsync();
             return result;
         }
-
-       private void ListBox_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
-       {
-           var position = e.GetPosition(this.nqkakwonesto);
-        //this.nqkakwonesto.Visibility = Visibility.Visible;
-        //this.nqkakwonesto.Height = 100;
-        //this.nqkakwonesto.Width = 100;
-        //var gg = sender;
-        //var g = ((e.OriginalSource as ListBoxItem).DataContext) as ExpensesContentViewModel;
-       }
-
-        private void ListBox_DoubleTapped_1(object sender, DoubleTappedRoutedEventArgs e)
+        
+        private void DoubleTappedOnListBox(object sender, DoubleTappedRoutedEventArgs e)
         {
-          //  ((sender.OriginalSource as ListBoxItem).DataContext) as ExpensesContentViewModel;
+           // var position = e.GetPosition(this.nqkakwonesto);
+            var item = (sender as ListBox).SelectedItem as IncomeViewModel;
+            this.priceDetailIncome.Text = $"Price: { item.Price}"; 
+            this.dateDetailIncome.Text = $"Date: {  item.DateOfIncome} ";
+            this.descriptionDetailIncome.Text = item.Description.ToString();
+            this.categoryDetailIncome.Text = $"Category: { item.CategoryIncomeString}";
+
+            this.incomeDetailsInformation.Visibility = Visibility.Visible;
+            this.scrollViewer.Visibility = Visibility.Collapsed;
+            this.scrollViewerIncomes.Visibility = Visibility.Collapsed;
         }
     }
 }

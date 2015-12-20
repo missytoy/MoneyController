@@ -91,7 +91,8 @@ namespace MoneyController
                 case 'R': return "/Assets/CategoryLetters/rLetter.jpg";
                 case 'C': return "/Assets/CategoryLetters/cLetter.jpg";
                 case 'I': return "/Assets/CategoryLetters/iLetter.jpg";
-                case 'O': return "/Assets/CategoryLetters/oLetter.jpg";
+                case 'G': return "/Assets/CategoryLetters/gLetter.jpg";
+                case 'O': return "/Assets/CategoryLetters/oLetter.jpg"; 
                 default: return "/Assets/CategoryLetters/oLetter.jpg";
             }
         }
