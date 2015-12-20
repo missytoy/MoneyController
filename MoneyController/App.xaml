@@ -87,13 +87,7 @@
             <Setter Property="TextAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
-
-        <Style TargetType="EntranceThemeTransition" >
-            <Setter Property="FromVerticalOffset" Value="-500"/>
-            <Setter Property="IsStaggeringEnabled" Value="True"/>
-        </Style>
         
-
     </Application.Resources>
     
 </Application>

@@ -7,12 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     
-    <Grid ManipulationStarted="MainPage_ManipulationStarted" ManipulationDelta="MainPage_ManipulationDelta" ManipulationMode="All">
+    <Grid ManipulationStarted="MainPage_ManipulationStarted" ManipulationDelta="MainPage_ManipulationDelta" ManipulationCompleted="MainPage_ManipulationCompleted" ManipulationMode="All">
         <Frame Name="MainPageFrame">
             <Grid Style="{StaticResource LayoutGridStyle}">
                 <Grid.ChildrenTransitions>
                     <TransitionCollection>
-                        <EntranceThemeTransition />
+                        <EntranceThemeTransition FromVerticalOffset="50"
+                                         IsStaggeringEnabled="True"/>
                     </TransitionCollection>
                 </Grid.ChildrenTransitions>
 
