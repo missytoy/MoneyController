@@ -41,7 +41,6 @@
 
             </Grid>
         </DataTemplate>
-        
         <DataTemplate x:Key="incomesTemplate">
             <Grid >
                 <Grid.ColumnDefinitions>
@@ -62,6 +61,22 @@
                          Grid.Column="2" 
                          Style="{StaticResource TextBlockIncomeStyle}"
                          TextWrapping="WrapWholeWords"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="expenseTemplateAnalytics">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Price,Mode=TwoWay}"
+                        Style="{StaticResource TextBlockIncomeStyle}"
+                        Grid.Row="0"
+                        Grid.Column="0"/>
+                <TextBlock Text="{Binding CategoryExpenseString,Mode=TwoWay}"
+                        Style="{StaticResource TextBlockIncomeStyle}"
+                        Grid.Row="0"
+                        Grid.Column="1"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>
@@ -107,17 +122,33 @@
                     <Button Content="Analytics incomes" Grid.Column="0" Grid.Row="1"  Click="OnAnalyticsIncomesButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
                 </Grid>
 
-                <Button Content="Cancel" Grid.Row="3" Click="OnCancelButtonClick" Style="{StaticResource CancelandAddButtonStyle}"/>
-
-
-                <ScrollViewer Style="{StaticResource ScrollViewerStyle}" Name="scrollViewer" Grid.Row="2" >
+                <Button Content="Cancel"
+                        Grid.Row="3" 
+                        Click="OnCancelButtonClick"
+                        Style="{StaticResource CancelandAddButtonStyle}"/>
+                
+                <ScrollViewer
+                    Style="{StaticResource ScrollViewerStyle}" 
+                    Name="scrollViewer" Grid.Row="2" >
                     <Grid>
                         <ListBox ItemsSource="{Binding ExpensesModel}"
-                                     ItemTemplate="{StaticResource expensesTemplate}"   />
+                                 DoubleTapped="DoubleTappedOnListBoxExpense"
+                                 ItemTemplate="{StaticResource expensesTemplate}"   />
                     </Grid>
                 </ScrollViewer>
 
-                <ScrollViewer  Style="{StaticResource ScrollViewerStyle}" Name="scrollViewerIncomes" Grid.Row="2">
+                <ScrollViewer
+                    Style="{StaticResource ScrollViewerStyle}" 
+                    Name="scrollViewerIncomeDetails" Grid.Row="2" >
+                    <Grid>
+                        <ListBox ItemsSource="{Binding ExpensesModel}"
+                                 ItemTemplate="{StaticResource expenseTemplateAnalytics}"   />
+                    </Grid>
+                </ScrollViewer>
+
+                <ScrollViewer 
+                    Style="{StaticResource ScrollViewerStyle}" 
+                    Name="scrollViewerIncomes" Grid.Row="2">
                     <Border>
                         <Grid>
                             <ListBox  DoubleTapped="DoubleTappedOnListBox"
@@ -157,9 +188,45 @@
                             Grid.Row="0"
                             Grid.Column="0"/>
 
-
                     </Grid>
                 </Border>
+
+                <Border   Grid.Row="6"  Name="expenseDetailsInformation"  Visibility="Collapsed">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Name="imageSourceExpenseDetailInforamtion" 
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           Grid.RowSpan="4"/>
+                        <TextBlock Name="categoryExpenseDetailInforamtion" 
+                           Style="{StaticResource TextBlockIncomeStyle}"
+                           Grid.Row="0"
+                           Grid.Column="2"/>
+                        <TextBlock  Name="priceExpenseDetailInforamtion" 
+                           Style="{StaticResource TextBlockIncomeStyle}"
+                           Grid.Row="1"
+                           Grid.Column="2"/>
+                        <TextBlock  Name="dateTimeExpenseDetailInforamtion" 
+                           Grid.Row="2"
+                           Grid.Column="2"
+                           Style="{StaticResource TextBlockIncomeStyle}"/>
+                        <TextBlock  Name="descriptionExpenseDetailInforamtion" 
+                           Grid.Row="3"
+                           Grid.Column="3"
+                           Style="{StaticResource TextBlockIncomeStyle}"/>
+                    </Grid>
+                </Border>
+
             </Grid>
         </Grid>
     </Grid>

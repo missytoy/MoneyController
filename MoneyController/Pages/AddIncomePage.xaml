@@ -85,9 +85,6 @@
                 
                 <DatePicker  Name="dataPicker" Background="#6d8963" Grid.Row="5" HorizontalAlignment="Stretch"  />
 
-                <!--<StackPanel  Grid.Row="8"  Background="#323f2d" Margin="0,0,-20,0" Height="30"   >
-                    <TextBlock Text="{Binding Source={StaticResource dateTimeTaker}, Path=Now}"  Style="{StaticResource LabelTextBlockExpenseStyle}"/>
-                </StackPanel>-->
             </Grid>
         </Grid>
     </Grid>
