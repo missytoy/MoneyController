@@ -7,15 +7,43 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
-            <CheckBox Content="Force Location" IsChecked="{Binding ForeceLocation, Mode=TwoWay}"/>
-            <TextBlock Text="Forced Latitude"/>
-            <TextBox Text="{Binding ForcedLatitude, Mode=TwoWay}"/>
-            <TextBlock Text="Forced Longitude"/>
-            <TextBox Text="{Binding ForcedLongitude, Mode=TwoWay}"/>
-            <TextBlock Text="Forced Accuracy In Meters"/>
-            <TextBox Text="{Binding ForcedAccuracyInMeters, Mode=TwoWay}"/>
-        </StackPanel>
+    <Grid Style="{StaticResource LayoutGridStyle}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Border Background="#6d8963" Grid.Row="0">
+                <CheckBox Content="Force Location" IsChecked="{Binding ForeceLocation, Mode=TwoWay}" />
+            </Border>
+        <Border Background="#323f2d" Grid.Row="1" Margin="0">
+                <TextBlock Text="Forced Latitude" Style="{StaticResource LabelTextBlockExpenseStyle}"/>
+            </Border>
+        <Border Background="#6d8963" Grid.Row="2" Margin="0,0,0,10">
+                <TextBox Text="{Binding ForcedLatitude, Mode=TwoWay}" />
+            </Border>
+        <Border Background="#323f2d" Grid.Row="3" Margin="0">
+                <TextBlock Text="Forced Longitude" Style="{StaticResource LabelTextBlockExpenseStyle}"/>
+            </Border>
+        <Border Background="#6d8963" Grid.Row="4" Margin="0,0,0,10">
+                <TextBox Text="{Binding ForcedLongitude, Mode=TwoWay}"/>
+            </Border>
+        <Border Background="#323f2d" Grid.Row="5" Margin="0">
+                <TextBlock Text="Forced Accuracy In Meters" Style="{StaticResource LabelTextBlockExpenseStyle}"/>
+            </Border>
+        <Border Background="#6d8963" Grid.Row="6" Margin="0,0,0,10">
+                <TextBox Text="{Binding ForcedAccuracyInMeters, Mode=TwoWay}"/>
+            </Border>
+
     </Grid>
 </Page>
