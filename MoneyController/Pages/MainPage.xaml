@@ -40,11 +40,13 @@
                               Content="Home"
                               Icon="Home" 
                               Click="Home_Click"/>
-                <AppBarSeparator BorderThickness="2"/>
-                <AppBarButton Name="Add"
+                <AppBarSeparator />
+                <AppBarButton Name="AddExpense"
                               Content="Add"
-                              Icon="Add" 
-                              Click="Add_Click"/>
+                              Icon="Up" Click="AddExpense_Click" />
+                <AppBarButton Name="AddIncome"
+                              Content="Add"
+                              Icon="Add" Click="AddIncome_Click" />
                 <AppBarButton Name="Analytics"
                               Content="Analytics"
                               Icon="OpenFile" 
@@ -52,6 +54,7 @@
                 <AppBarButton Name="Options"
                               Content="Options"
                               Icon="Setting" />
+                <!--<Line X1="0" Y1="60"  Margin="0,10,0,0" StrokeThickness="3" Stroke="White"/>-->
             </StackPanel>
         </AppBar>
     </Page.TopAppBar>

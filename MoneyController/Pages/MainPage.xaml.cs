@@ -50,14 +50,21 @@ namespace MoneyController
             this.Frame.Navigate(typeof(MainPage));
         }
 
-        private void Add_Click(object sender, RoutedEventArgs e)
+        private void AddExpense_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(AddExpensePage));
+        }
+
+        private void AddIncome_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(AddIncomePage));
         }
 
         private void Analytics_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(AnalyticsPage));
         }
+
+        
     }
 }
