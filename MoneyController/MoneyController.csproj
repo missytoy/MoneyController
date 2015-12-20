@@ -136,6 +136,18 @@
     <None Include="MoneyController_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\CategoryLetters\cLetter.jpg" />
+    <Content Include="Assets\CategoryLetters\eLetter.jpg" />
+    <Content Include="Assets\CategoryLetters\fLetter.jpg" />
+    <Content Include="Assets\CategoryLetters\gLetter.jpg" />
+    <Content Include="Assets\CategoryLetters\hLetter.jpg" />
+    <Content Include="Assets\CategoryLetters\iLetter.jpg" />
+    <Content Include="Assets\CategoryLetters\lLetter.jpg" />
+    <Content Include="Assets\CategoryLetters\oLetter.jpg" />
+    <Content Include="Assets\CategoryLetters\pLetter.jpg" />
+    <Content Include="Assets\CategoryLetters\rLetter.jpg" />
+    <Content Include="Assets\CategoryLetters\sLetter.jpg" />
+    <Content Include="Assets\CategoryLetters\tLetter.jpg" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\money-wallpaper-100.jpg" />
     <Content Include="Properties\Default.rd.xml" />
@@ -177,7 +189,6 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\CategoryLetters\" />
     <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>

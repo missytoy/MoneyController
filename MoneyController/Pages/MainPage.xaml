@@ -16,6 +16,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                    
                 </Grid.RowDefinitions>
 
@@ -29,10 +30,10 @@
                 <Button Content="Add Expense" Grid.Row="2" Click="OnAddExpenseButtonClick"/>
                 <Button Content="Analytics" Grid.Row="3" Click="OnAnalyticsButtonClick" />
                 <Button Content="Options" Grid.Row="4" Click="OnOptionsButtonClick" />
- 
             </Grid>
         </Grid>
     </Grid>
+    
     <Page.TopAppBar>
         <AppBar>
             <StackPanel Orientation="Horizontal">

@@ -47,8 +47,7 @@ namespace MoneyController
                 return;
             }
             var expenseCategoryText = ComboBoxExpense.SelectedValue == null ? "Other" : ComboBoxExpense.SelectedValue.ToString();
-
-            //TODO:
+            
             var photo = this.ViewModel.Photo;
 
             var item = new ExpenseItem
@@ -57,7 +56,7 @@ namespace MoneyController
                 Description = this.DescriptionTextBox.Text,
                 DateAndTimeOfExpence = this.dataPicker.Date.DateTime,
                 CategoryExpense = expenseCategoryText,
-                //Gelocation = currentLocation, //LocationTextBox.Text, //delete location textbox from page and take the gelocation from phone
+                Place = this.PlaceTextBox.Text, //LocationTextBox.Text, //delete location textbox from page and take the gelocation from phone
                 Photo = photo == null ? TakeDefaultPhotoDependingOnTheCategory(expenseCategoryText) : photo //TODO: fix the button add photo and put the photo here
 
             };
@@ -71,19 +70,19 @@ namespace MoneyController
         {
             switch (categoryExpense[0])
             {
-                case 'F': return "/Assets/CategoryLetters/fLetter";
-                case 'E': return "/Assets/CategoryLetters/eLetter";
-                case 'H': return "/Assets/CategoryLetters/hLetter";
-                case 'T': return "/Assets/CategoryLetters/tLetter";
-                case 'B': return "/Assets/CategoryLetters/bLetter";
-                case 'L': return "/Assets/CategoryLetters/lLetter";
-                case 'P': return "/Assets/CategoryLetters/pLetter";
-                case 'S': return "/Assets/CategoryLetters/sLetter";
-                case 'R': return "/Assets/CategoryLetters/rLetter";
-                case 'C': return "/Assets/CategoryLetters/cLetter";
-                case 'I': return "/Assets/CategoryLetters/iLetter";
-                case 'O': return "/Assets/CategoryLetters/oLetter";
-                default: return "/Assets/CategoryLetters/oLetter";
+                case 'F': return "/Assets/CategoryLetters/fLetter.jpg";
+                case 'E': return "/Assets/CategoryLetters/eLetter.jpg";
+                case 'H': return "/Assets/CategoryLetters/hLetter.jpg";
+                case 'T': return "/Assets/CategoryLetters/tLetter.jpg";
+                case 'B': return "/Assets/CategoryLetters/bLetter.jpg";
+                case 'L': return "/Assets/CategoryLetters/lLetter.jpg";
+                case 'P': return "/Assets/CategoryLetters/pLetter.jpg";
+                case 'S': return "/Assets/CategoryLetters/sLetter.jpg";
+                case 'R': return "/Assets/CategoryLetters/rLetter.jpg";
+                case 'C': return "/Assets/CategoryLetters/cLetter.jpg";
+                case 'I': return "/Assets/CategoryLetters/iLetter.jpg";
+                case 'O': return "/Assets/CategoryLetters/oLetter.jpg";
+                default: return "/Assets/CategoryLetters/oLetter.jpg";
             }
         }
 
