@@ -6,6 +6,9 @@
 
     public class IncomeViewModel : ViewModelBase
     {
+        private decimal price;
+        private string categoryIncomeString;
+
         public static Expression<Func<IncomeItem, IncomeViewModel>> FromModel
         {
             get
@@ -20,7 +23,15 @@
             }
         }
 
-        public decimal Price { get; set; }
+        public decimal Price
+        {
+            get { return this.price; }
+            set
+            {
+                this.price = value;
+                RaisePropertyChange("Price");
+            }
+        }
 
         public DateTime DateOfIncome { get; set; }
 
@@ -30,6 +41,14 @@
 
         public IncomeType IncomeCategory { get; set; }
 
-        public string CategoryIncomeString { get; set; }
+        public string CategoryIncomeString
+        {
+            get { return this.categoryIncomeString; }
+            set
+            {
+                this.categoryIncomeString = value;
+                RaisePropertyChange("CategoryIncomeString");
+            }
+        }
     }
 }
