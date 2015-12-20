@@ -119,6 +119,9 @@
     </Compile>
     <Compile Include="Models\ExpenseItem.cs" />
     <Compile Include="Models\IncomeItem.cs" />
+    <Compile Include="Pages\StartPage.xaml.cs">
+      <DependentUpon>StartPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\DateTimeTaker.cs" />
     <Compile Include="ViewModels\ExpensesContentViewModel.cs" />
@@ -178,6 +181,10 @@
     <Page Include="Pages\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\StartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
