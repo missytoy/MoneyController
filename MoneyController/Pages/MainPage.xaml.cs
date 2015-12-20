@@ -20,55 +20,73 @@ namespace MoneyController
 {
     public sealed partial class MainPage : Page
     {
+        public object MainPagePage;
+        public AddExpensePage AddExpensePagePage;
+        public AddIncomePage AddIncomePagePage;
+        public AnalyticsPage AnalyticsPagePage;
+        //public Page OptionsPagePage;
+        
+
         public MainPage()
         {
             this.InitializeComponent();
+            MainPagePage = MainPageFrame.Content;
+            this.AddExpensePagePage = new AddExpensePage(this);
+            this.AddIncomePagePage = new AddIncomePage(this);
+            this.AnalyticsPagePage = new AnalyticsPage(this);
+            //this.OptionsPagePage = new OptionsPage(this);
+        }
+
+        public void NavigateToMainPage()
+        {
+            MainPageFrame.Content = MainPagePage;
         }
 
         private void OnAddIncomeButtonClick(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(AddIncomePage));
+            MainPageFrame.Content = this.AddIncomePagePage;
         }
 
         private void OnAddExpenseButtonClick(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(AddExpensePage));
+            MainPageFrame.Content = this.AddExpensePagePage;
         }
 
         private void OnAnalyticsButtonClick(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(AnalyticsPage)); //TODO:  //charts for day,for month, for year...
+            MainPageFrame.Content = this.AnalyticsPagePage; //TODO:  //charts for day,for month, for year...
         }
 
         private void OnOptionsButtonClick(object sender, RoutedEventArgs e)
         {
-            //TODO: this.Frame.Navigate(typeof(Options)); //stop notifications
+            //TODO: MainPageFrame.Content = this.OptionsPage; //stop notifications
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(StartPage));
+            NavigateToMainPage();
         }
 
-        //private void Home_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Frame.Navigate(typeof(StartPage));
-        //}
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
 
-        //private void AddExpense_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Frame.Navigate(typeof(AddExpensePage));
-        //}
+            this.Frame.Navigate(typeof(MainPage));
+        }
 
-        //private void AddIncome_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Frame.Navigate(typeof(AddIncomePage));
-        //}
+        private void AddExpense_Click(object sender, RoutedEventArgs e)
+        {
+            MainPageFrame.Content = this.AddExpensePagePage;
+        }
 
-        //private void Analytics_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Frame.Navigate(typeof(AnalyticsPage));
-        //}
+        private void AddIncome_Click(object sender, RoutedEventArgs e)
+        {
+            MainPageFrame.Content = this.AddIncomePagePage;
+        }
+
+        private void Analytics_Click(object sender, RoutedEventArgs e)
+        {
+            MainPageFrame.Content = this.AnalyticsPagePage;
+        }
 
 
     }

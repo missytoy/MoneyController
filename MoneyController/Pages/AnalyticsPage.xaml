@@ -65,9 +65,7 @@
 
         <Grid.ChildrenTransitions>
             <TransitionCollection>
-                <EntranceThemeTransition 
-                    FromVerticalOffset="500"
-                    IsStaggeringEnabled="True" />
+                <EntranceThemeTransition />
             </TransitionCollection>
         </Grid.ChildrenTransitions>
 

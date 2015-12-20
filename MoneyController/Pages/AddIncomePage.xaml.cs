@@ -32,6 +32,14 @@ namespace MoneyController
             this.ViewModel = new IncomeViewModel();
         }
 
+        public AddIncomePage(MainPage page)
+            :this()
+        {
+            this.MainPageLink = page;
+        }
+
+        public MainPage MainPageLink { get; set; }
+
         public IncomeViewModel ViewModel
         {
             get { return this.DataContext as IncomeViewModel; }
@@ -60,12 +68,12 @@ namespace MoneyController
 
             await this.InsertIncomeAsync(item);
             Notification.ShowNotification("New income added");
-            this.Frame.Navigate(typeof(MainPage));
+            this.MainPageLink.NavigateToMainPage();
         }
 
         private void OnCancelButtonClick(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            this.MainPageLink.NavigateToMainPage();
         }
 
         private SQLiteAsyncConnection GetDbConnectionAsync()

@@ -7,63 +7,60 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Name="MainPageMainGrid"  Style="{StaticResource LayoutGridStyle}">
+    <Frame Name="MainPageFrame">
+        <Grid Style="{StaticResource LayoutGridStyle}">
+            <Grid.ChildrenTransitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition />
+                </TransitionCollection>
+            </Grid.ChildrenTransitions>
 
-        <Grid.ChildrenTransitions>
-            <TransitionCollection>
-                <EntranceThemeTransition />
-            </TransitionCollection>
-        </Grid.ChildrenTransitions>
-        
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                   
-                </Grid.RowDefinitions>
+            <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
 
-                <StackPanel Grid.Row="0" Margin="29,0,0,0">
-                    <TextBlock Text="{StaticResource AppName}" 
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Margin="29,0,0,0">
+                        <TextBlock Text="{StaticResource AppName}" 
                                Style="{StaticResource TitleStyle}" />
 
-                </StackPanel>
+                    </StackPanel>
 
-                <Button Content="Add Income" Grid.Row="1" Click="OnAddIncomeButtonClick" />
-                <Button Content="Add Expense" Grid.Row="2" Click="OnAddExpenseButtonClick"/>
-                <Button Content="Analytics" Grid.Row="3" Click="OnAnalyticsButtonClick" />
-                <Button Content="Options" Grid.Row="4" Click="OnOptionsButtonClick" />
-                <Button Content="to Start Page" Grid.Row="5" Click="Button_Click"/>
+                    <Button Content="Add Income" Grid.Row="1" Click="OnAddIncomeButtonClick" />
+                    <Button Content="Add Expense" Grid.Row="2" Click="OnAddExpenseButtonClick"/>
+                    <Button Content="Analytics" Grid.Row="3" Click="OnAnalyticsButtonClick" />
+                    <Button Content="Options" Grid.Row="4" Click="OnOptionsButtonClick" />
+                </Grid>
             </Grid>
         </Grid>
-    </Grid>
-    <!--<Page.TopAppBar>
+    </Frame>
+    <Page.TopAppBar>
         <AppBar>
             <StackPanel Orientation="Horizontal">
                 <AppBarButton Name="Home"
                               Content="Home"
-                              Icon="Home" 
-                              Click="Home_Click"/>
+                              Icon="Home" Click="Home_Click"/>
                 <AppBarSeparator />
                 <AppBarButton Name="AddExpense"
-                              Content="Add"
+                              Content="Add" 
                               Icon="Up" Click="AddExpense_Click" />
                 <AppBarButton Name="AddIncome"
                               Content="Add"
                               Icon="Add" Click="AddIncome_Click" />
                 <AppBarButton Name="Analytics"
                               Content="Analytics"
-                              Icon="OpenFile" 
-                              Click="Analytics_Click"/>
+                              Icon="OpenFile" Click="Analytics_Click"/>
                 <AppBarButton Name="Options"
                               Content="Options"
                               Icon="Setting" />
-                --><!--<Line X1="0" Y1="60"  Margin="0,10,0,0" StrokeThickness="3" Stroke="White"/>--><!--
             </StackPanel>
         </AppBar>
-    </Page.TopAppBar>-->
+    </Page.TopAppBar>
 </Page>
