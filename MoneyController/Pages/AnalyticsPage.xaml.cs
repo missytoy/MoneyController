@@ -44,6 +44,7 @@
             this.incomeDetailsInformation.Visibility = Visibility.Collapsed;
             this.scrollViewerIncomeDetails.Visibility = Visibility.Collapsed;
             this.expenseDetailsInformation.Visibility = Visibility.Collapsed;
+            this.scrollViewerIncomesDetails.Visibility = Visibility.Collapsed;
 
         }
 
@@ -60,6 +61,7 @@
             this.scrollViewer.Visibility = Visibility.Collapsed;
             this.scrollViewerIncomes.Visibility = Visibility.Collapsed;
             this.incomeDetailsInformation.Visibility = Visibility.Collapsed;
+            this.scrollViewerIncomesDetails.Visibility = Visibility.Collapsed;
             this.expenseDetailsInformation.Visibility = Visibility.Collapsed;
 
         }
@@ -77,6 +79,7 @@
             this.scrollViewer.Visibility = Visibility.Collapsed;
             this.scrollViewerIncomeDetails.Visibility = Visibility.Collapsed;
             this.incomeDetailsInformation.Visibility = Visibility.Collapsed;
+            this.scrollViewerIncomesDetails.Visibility = Visibility.Collapsed;
             this.expenseDetailsInformation.Visibility = Visibility.Collapsed;
 
         }
@@ -89,9 +92,10 @@
             
             (this.DataContext as IncomeContentViewModel).IncomeModels = incomeData.AsQueryable()
                              .Select(IncomeViewModel.FromModel);
-
+            
+            this.scrollViewerIncomesDetails.Visibility = Visibility.Visible;
             this.scrollViewer.Visibility = Visibility.Collapsed;
-            this.scrollViewerIncomes.Visibility = Visibility.Visible;
+            this.scrollViewerIncomes.Visibility = Visibility.Collapsed;
             this.incomeDetailsInformation.Visibility = Visibility.Collapsed;
             this.scrollViewerIncomeDetails.Visibility = Visibility.Collapsed;
             this.expenseDetailsInformation.Visibility = Visibility.Collapsed;
@@ -194,6 +198,7 @@
             this.scrollViewerIncomeDetails.Visibility = Visibility.Collapsed;
             this.scrollViewer.Visibility = Visibility.Collapsed;
             this.scrollViewerIncomes.Visibility = Visibility.Collapsed;
+            this.scrollViewerIncomesDetails.Visibility = Visibility.Collapsed;
         }
 
         private void DoubleTappedOnListBoxExpense(object sender, DoubleTappedRoutedEventArgs e)
@@ -219,6 +224,7 @@
             this.scrollViewer.Visibility = Visibility.Collapsed;
             this.scrollViewerIncomeDetails.Visibility = Visibility.Collapsed;
             this.scrollViewerIncomes.Visibility = Visibility.Collapsed;
+            this.scrollViewerIncomesDetails.Visibility = Visibility.Collapsed;
         }
     }
 }

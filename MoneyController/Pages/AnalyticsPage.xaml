@@ -68,15 +68,51 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
+                   <TextBlock Text="Price: "
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           Style="{StaticResource TextBlockIncomeStyle}"/>
                 <TextBlock Text="{Binding Price,Mode=TwoWay}"
-                        Style="{StaticResource TextBlockIncomeStyle}"
-                        Grid.Row="0"
-                        Grid.Column="0"/>
+                           Style="{StaticResource TextBlockIncomeStyle}"
+                           Grid.Row="0"
+                           Grid.Column="1"/>
+                <TextBlock Text="  Category: "
+                           Grid.Row="0"
+                           Grid.Column="2"
+                           Style="{StaticResource TextBlockIncomeStyle}"/>
                 <TextBlock Text="{Binding CategoryExpenseString,Mode=TwoWay}"
                         Style="{StaticResource TextBlockIncomeStyle}"
                         Grid.Row="0"
+                        Grid.Column="3"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="incomeTemplateAnalytics">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Price: "
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           Style="{StaticResource TextBlockIncomeStyle}"/>
+                <TextBlock Text="{Binding Price,Mode=TwoWay}"
+                        Style="{StaticResource TextBlockIncomeStyle}"
+                        Grid.Row="0"
                         Grid.Column="1"/>
+                <TextBlock Text="  Category: "
+                           Grid.Row="0"
+                           Grid.Column="2"
+                           Style="{StaticResource TextBlockIncomeStyle}"/>
+                <TextBlock Text="{Binding CategoryIncomeString,Mode=TwoWay}"
+                        Style="{StaticResource TextBlockIncomeStyle}"
+                        Grid.Row="0"
+                        Grid.Column="3"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>
@@ -154,6 +190,18 @@
                             <ListBox  DoubleTapped="DoubleTappedOnListBox"
                                       ItemsSource="{Binding IncomeModels}"
                                       ItemTemplate="{StaticResource incomesTemplate}"   />
+                        </Grid>
+                    </Border>
+                </ScrollViewer>
+
+                <ScrollViewer 
+                    Style="{StaticResource ScrollViewerStyle}" 
+                    Name="scrollViewerIncomesDetails" Grid.Row="2">
+                    <Border>
+                        <Grid>
+                            <ListBox
+                                      ItemsSource="{Binding IncomeModels}"
+                                      ItemTemplate="{StaticResource incomeTemplateAnalytics}"   />
                         </Grid>
                     </Border>
                 </ScrollViewer>
