@@ -46,17 +46,21 @@
             <StackPanel Orientation="Horizontal">
                 <AppBarButton Name="Home"
                               Content="Home"
-                              Icon="Home" Click="Home_Click"/>
+                              Icon="Home"
+                              Click="Home_Click"/>
                 <AppBarSeparator />
                 <AppBarButton Name="AddExpense"
                               Content="Add" 
-                              Icon="Up" Click="AddExpense_Click" />
+                              Icon="Remove"
+                              Click="AddExpense_Click" />
                 <AppBarButton Name="AddIncome"
                               Content="Add"
-                              Icon="Add" Click="AddIncome_Click" />
+                              Icon="Add"
+                              Click="AddIncome_Click" />
                 <AppBarButton Name="Analytics"
                               Content="Analytics"
-                              Icon="OpenFile" Click="Analytics_Click"/>
+                              Icon="ViewAll"
+                              Click="Analytics_Click"/>
                 <AppBarButton Name="Options"
                               Content="Options"
                               Icon="Setting" />
