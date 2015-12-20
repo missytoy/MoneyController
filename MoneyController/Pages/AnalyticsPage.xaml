@@ -73,7 +73,7 @@
                         Style="{StaticResource TextBlockIncomeStyle}"
                         Grid.Row="0"
                         Grid.Column="0"/>
-                <TextBlock Text="{Binding CategoryIncomeString,Mode=TwoWay}"
+                <TextBlock Text="{Binding CategoryExpenseString,Mode=TwoWay}"
                         Style="{StaticResource TextBlockIncomeStyle}"
                         Grid.Row="0"
                         Grid.Column="1"/>
@@ -139,7 +139,7 @@
 
                 <ScrollViewer
                     Style="{StaticResource ScrollViewerStyle}" 
-                    Name="scrollViewerrDetails" Grid.Row="2" >
+                    Name="scrollViewerIncomeDetails" Grid.Row="2" >
                     <Grid>
                         <ListBox ItemsSource="{Binding ExpensesModel}"
                                  ItemTemplate="{StaticResource expenseTemplateAnalytics}"   />

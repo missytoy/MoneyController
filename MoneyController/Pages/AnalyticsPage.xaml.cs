@@ -1,29 +1,21 @@
-﻿using MoneyController.Models;
-using MoneyController.ViewModels;
-using SQLite.Net;
-using SQLite.Net.Async;
-using SQLite.Net.Platform.WinRT;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Storage;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI.Xaml.Navigation;
-
-namespace MoneyController
+﻿namespace MoneyController
 {
+    using MoneyController.Models;
+    using MoneyController.ViewModels;
+    using SQLite.Net;
+    using SQLite.Net.Async;
+    using SQLite.Net.Platform.WinRT;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Windows.Storage;
+    using Windows.UI.Xaml;
+    using Windows.UI.Xaml.Controls;
+    using Windows.UI.Xaml.Input;
+    using Windows.UI.Xaml.Media.Imaging;
+
     public sealed partial class AnalyticsPage : Page
     {
         public AnalyticsPage()
@@ -50,6 +42,7 @@ namespace MoneyController
             this.scrollViewer.Visibility = Visibility.Visible;
             this.scrollViewerIncomes.Visibility = Visibility.Collapsed;
             this.incomeDetailsInformation.Visibility = Visibility.Collapsed;
+            this.scrollViewerIncomeDetails.Visibility = Visibility.Collapsed;
             this.expenseDetailsInformation.Visibility = Visibility.Collapsed;
 
         }
@@ -63,7 +56,8 @@ namespace MoneyController
             (this.DataContext as ExpensesContentViewModel).ExpensesModel = expenseData.AsQueryable()
                                 .Select(ExpenseViewModel.FromModel);
 
-            this.scrollViewerrDetails.Visibility = Visibility.Visible;
+            this.scrollViewerIncomeDetails.Visibility = Visibility.Visible;
+            this.scrollViewer.Visibility = Visibility.Collapsed;
             this.scrollViewerIncomes.Visibility = Visibility.Collapsed;
             this.incomeDetailsInformation.Visibility = Visibility.Collapsed;
             this.expenseDetailsInformation.Visibility = Visibility.Collapsed;
@@ -78,9 +72,10 @@ namespace MoneyController
 
             (this.DataContext as IncomeContentViewModel).IncomeModels = incomeData.AsQueryable()
                                                                                      .Select(IncomeViewModel.FromModel);
-            
-            this.scrollViewer.Visibility = Visibility.Collapsed;
+
             this.scrollViewerIncomes.Visibility = Visibility.Visible;
+            this.scrollViewer.Visibility = Visibility.Collapsed;
+            this.scrollViewerIncomeDetails.Visibility = Visibility.Collapsed;
             this.incomeDetailsInformation.Visibility = Visibility.Collapsed;
             this.expenseDetailsInformation.Visibility = Visibility.Collapsed;
 
@@ -98,6 +93,7 @@ namespace MoneyController
             this.scrollViewer.Visibility = Visibility.Collapsed;
             this.scrollViewerIncomes.Visibility = Visibility.Visible;
             this.incomeDetailsInformation.Visibility = Visibility.Collapsed;
+            this.scrollViewerIncomeDetails.Visibility = Visibility.Collapsed;
             this.expenseDetailsInformation.Visibility = Visibility.Collapsed;
         }
 
@@ -195,6 +191,7 @@ namespace MoneyController
 
             this.incomeDetailsInformation.Visibility = Visibility.Visible;
             this.expenseDetailsInformation.Visibility = Visibility.Collapsed;
+            this.scrollViewerIncomeDetails.Visibility = Visibility.Collapsed;
             this.scrollViewer.Visibility = Visibility.Collapsed;
             this.scrollViewerIncomes.Visibility = Visibility.Collapsed;
         }
@@ -220,6 +217,7 @@ namespace MoneyController
             this.expenseDetailsInformation.Visibility = Visibility.Visible;
             this.incomeDetailsInformation.Visibility = Visibility.Collapsed;
             this.scrollViewer.Visibility = Visibility.Collapsed;
+            this.scrollViewerIncomeDetails.Visibility = Visibility.Collapsed;
             this.scrollViewerIncomes.Visibility = Visibility.Collapsed;
         }
     }
