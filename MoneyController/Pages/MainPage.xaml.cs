@@ -22,8 +22,8 @@ namespace MoneyController
     public sealed partial class MainPage : Page
     {
         private object MainPagePage;
-        private AddExpensePage AddExpensePagePage;
-        private AddIncomePage AddIncomePagePage;
+        private AddExpensePage addExpensePagePage;
+        private AddIncomePage addIncomePagePage;
         private AnalyticsPage AnalyticsPagePage;
         private OptionsPage OptionsPagePage;
         private Point initialpoint;
@@ -42,6 +42,32 @@ namespace MoneyController
         }
 
         public OptionsViewModel OptionsViewModelModel { get; private set; }
+
+        public AddIncomePage AddIncomePagePage
+        {
+            get
+            {
+                return addIncomePagePage;
+            }
+
+            set
+            {
+                addIncomePagePage = value;
+            }
+        }
+
+        public AddExpensePage AddExpensePagePage
+        {
+            get
+            {
+                return addExpensePagePage;
+            }
+
+            set
+            {
+                addExpensePagePage = value;
+            }
+        }
 
         private void MainPage_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {

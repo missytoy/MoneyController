@@ -73,6 +73,7 @@ namespace MoneyController
 
             await this.InsertExpenseAsync(item);
             Notification.ShowNotification("New expense added");
+            this.MainPageLink.AddExpensePagePage = new AddExpensePage(this.MainPageLink);
             this.MainPageLink.NavigateToMainPage();
         }
 
@@ -99,6 +100,7 @@ namespace MoneyController
 
         private void OnCancelButtonClick(object sender, RoutedEventArgs e)
         {
+            this.MainPageLink.AddExpensePagePage = new AddExpensePage(this.MainPageLink);
             this.MainPageLink.NavigateToMainPage();
         }
 

@@ -68,11 +68,13 @@ namespace MoneyController
 
             await this.InsertIncomeAsync(item);
             Notification.ShowNotification("New income added");
+            this.MainPageLink.AddIncomePagePage = new AddIncomePage(this.MainPageLink);
             this.MainPageLink.NavigateToMainPage();
         }
 
         private void OnCancelButtonClick(object sender, RoutedEventArgs e)
         {
+            this.MainPageLink.AddIncomePagePage = new AddIncomePage(this.MainPageLink);
             this.MainPageLink.NavigateToMainPage();
         }
 
